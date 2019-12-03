@@ -18,6 +18,7 @@ import com.cpe.backend.entity.Employee;
 @Table(name="BOOK")
 public class Book {
 
+
     @Id
     @SequenceGenerator(name="book_seq",sequenceName="book_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="book_seq")
