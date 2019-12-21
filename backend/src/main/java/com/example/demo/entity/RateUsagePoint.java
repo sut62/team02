@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +24,9 @@ public class RateUsagePoint {
     @NonNull 
     private String email; 
     
+    @NonNull
+    private Date date;
+
     @NonNull
     private String suggestion;
 
