@@ -9,21 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-
 @Data
 @Entity
 @Getter @Setter
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name="Librarian")
-public class Librarian {
+@Table(name="Category")
+public class Category {
 
     @Id
-    @SequenceGenerator(name="librarian_seq",sequenceName="librarian_seq")               
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="librarian_seq")  
-    @Column(name = "LIBRARIAN_ID", unique = true, nullable = true)
-    private @NonNull Long librarianid;
-    private @NonNull String librarianName;
+    @SequenceGenerator(name="category_seq",sequenceName="category_seq")               
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="gategory_seq")  
+    @Column(name = "CATEGORY_ID", unique = true, nullable = true)
+    private @NonNull Long categoryid;
+    private @NonNull String category;
 
 }

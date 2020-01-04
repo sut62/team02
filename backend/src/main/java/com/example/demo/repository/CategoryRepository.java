@@ -3,9 +3,9 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.example.demo.entity.Year;
+import com.example.demo.entity.Category;;
 
 @RepositoryRestResource
-public interface YearRepository extends JpaRepository<Year, Long>{
-    Year findById(long yearid);
+public interface CategoryRepository extends JpaRepository<Category, Long>{
+    Category findById(long categoryid);
 }

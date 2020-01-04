@@ -2,9 +2,9 @@ package com.example.demo;
 
 import com.example.demo.repository.LibrarianRepository;
 import com.example.demo.repository.TypeRepository;
-import com.example.demo.repository.YearRepository;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.entity.Type;
-import com.example.demo.entity.Year;
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Librarian;
 
 import org.springframework.boot.SpringApplication;
@@ -21,7 +21,7 @@ public class DemoApplication {
 	}
 
 	@Bean
-	ApplicationRunner init(TypeRepository typeRepository, YearRepository yearRepository, LibrarianRepository librarianRepository) {
+	ApplicationRunner init(TypeRepository typeRepository, CategoryRepository categoryRepository, LibrarianRepository librarianRepository) {
 		return args -> {
 			Stream.of("AAA").forEach(type -> {
 				Type types = new Type();
@@ -29,10 +29,10 @@ public class DemoApplication {
 				typeRepository.save(types);
 			});
 
-			Stream.of("2000").forEach(year -> {
-				Year years = new Year();
-				years.setYear(year);
-				yearRepository.save(years);
+			Stream.of("SSSS").forEach(category -> {
+				Category categorys = new Category();
+				categorys.setCategory(category);
+				categoryRepository.save(categorys);
 			});
 		};
 	}
