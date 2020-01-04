@@ -34,8 +34,6 @@ public class DemoApplication {
 				years.setYear(year);
 				yearRepository.save(years);
 			});
-
-			
 		};
 	}
 }
