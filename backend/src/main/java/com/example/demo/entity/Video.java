@@ -33,9 +33,9 @@ public class Video {
     @JoinColumn(name = "TYPE_ID", insertable = true)
     private @NonNull Type type;
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Year.class)
-    @JoinColumn(name = "YEAR_ID", insertable = true)
-    private @NonNull Year year;
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Category.class)
+    @JoinColumn(name = "CATEGORY_ID", insertable = true)
+    private @NonNull Category category;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Librarian.class)
     @JoinColumn(name = "LIBRARIAN_ID", insertable = true)

@@ -13,13 +13,13 @@ import java.util.stream.Collectors;
 
 import com.example.demo.repository.LibrarianRepository;
 import com.example.demo.repository.TypeRepository;
-import com.example.demo.repository.YearRepository;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.VideoRepository;
 
 import com.example.demo.entity.Librarian;
 import com.example.demo.entity.Video;
 import com.example.demo.entity.Type;
-import com.example.demo.entity.Year;
+import com.example.demo.entity.Category;;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
@@ -29,7 +29,7 @@ class VideoController {
     private final VideoRepository videoRepository;
 
     @Autowired
-    private YearRepository yearRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private LibrarianRepository librarianRepository;
@@ -48,22 +48,22 @@ class VideoController {
         return videoRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("/addVideo/{librarianid}/{videoName}/{typeid}/{yearid}")
+    @PostMapping("/addVideo/{librarianid}/{videoName}/{typeid}/{categoryid}")
         public Video newVideo(Video newVideo,
                                   @PathVariable long librarianid,
                                   @PathVariable String videoName,
                                   @PathVariable long typeid,
-                                  @PathVariable long yearid) {
+                                  @PathVariable long categoryid) {
                                       
           
             Librarian librarian = librarianRepository.findById(librarianid);
             Type type = typeRepository.findById(typeid);
-            Year year = yearRepository.findById(yearid);
+            Category category = categoryRepository.findById(categoryid);
 
             newVideo.setLibrarian(librarian);
             newVideo.setVideoName(videoName);
             newVideo.setType(type);
-            newVideo.setYear(year);
+            newVideo.setCategory(category);
             
 
             
