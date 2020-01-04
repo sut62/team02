@@ -18,7 +18,6 @@ public class EducationLevel {
     @Column(unique = true)
     private Long id;
 
-
     @NonNull
     private String edlevel;
 }
