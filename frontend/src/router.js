@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App'
 import RateUP from './components/RateUP'
-import ViewRatingUP from './components/ViewRatingUP'
 
 Vue.use(VueRouter)
 
@@ -12,18 +11,14 @@ const router = new VueRouter({
         {
             path: '',
             component: App,
-            children: [
+            children:[
                 {
                     path: '',
-                    redirect: 'RateUP'
+                    redirect: 'rates'
                 },
                 {
-                    path: 'RateUP',
-                    component: RateUP
-                },
-                {
-                    path: 'viewrateup',
-                    component: ViewRatingUP
+                    path: 'rates',
+                    component: RateUP,
                 },
             ]
 
