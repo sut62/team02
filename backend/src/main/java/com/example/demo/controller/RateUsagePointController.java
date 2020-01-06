@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("Rates")
-@CrossOrigin(origins = "http://localhost/8080")
+@RequestMapping("/Rates")
+@CrossOrigin(origins = "http://localhost:8080")
 public class RateUsagePointController{
 
     @Autowired
-    private RateUsagePointRepo RateRepo;
+    private RateUsagePointRepo rateRepo;
 
     @Autowired
     private EducationLevelRepo eduRepo;
@@ -40,24 +40,25 @@ public class RateUsagePointController{
 
     @GetMapping("/RateUsage")
     public List<RateUsagePoint> getRateUsagePoint(){
-        return RateRepo.findAll();
+        return rateRepo.findAll();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/RateUsage/add")
     public RateUsagePoint addRateUsagePoint(@RequestBody    Map<String, String> body){
+
         RateUsagePoint newRateUP = new RateUsagePoint();
-        EducationLevel edlevel = eduRepo.findById(Long.valueOf(body.get("edulevel").toString())).get();
+        EducationLevel edlevel = eduRepo.findById(Long.valueOf(body.get("edlevel").toString())).get();
         Status status = statusRepo.findById(Long.valueOf(body.get("status").toString())).get();
         Rating rating = ratingRepo.findById(Long.valueOf(body.get("rating").toString())).get();
 
-        newRateUP.setEdlevel(edlevel);
         newRateUP.setStatus(status);
+        newRateUP.setEdlevel(edlevel);
         newRateUP.setDate(new Date());
         newRateUP.setEmail(body.get("email").toString());
         newRateUP.setSuggestion(body.get("suggestion").toString());
         newRateUP.setRating(rating);
 
-        return RateRepo.save(newRateUP);
+        return rateRepo.save(newRateUP);
     }
 
 }
