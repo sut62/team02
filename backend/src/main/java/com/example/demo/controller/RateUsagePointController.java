@@ -60,5 +60,4 @@ public class RateUsagePointController{
 
         return rateRepo.save(newRateUP);
     }
-
 }

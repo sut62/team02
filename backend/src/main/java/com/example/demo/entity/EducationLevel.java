@@ -18,7 +18,6 @@ public class EducationLevel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="EDUCATION_SEQ")  
     private Long id;
 
-
     @NonNull
     private String edlevel;
 }
