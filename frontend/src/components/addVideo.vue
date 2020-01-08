@@ -25,7 +25,7 @@
                               :items="librarian"
                               item-text="librarianName"
                               item-value="librarianid"
-                              :rules="[(v) => !!v || 'Item is required']"
+                              :rules="[(v) => !!v || 'กรุณาเลือกชื่อบรรณารักษ์']"
                               required
                       ></v-select>
                     </v-col>
@@ -37,7 +37,7 @@
                             name="videoName"
                             type="text"
                             v-model="video.videoName"
-                            :rules="[(v) => !!v || 'Please fill in the information']"
+                            :rules="[(v) => !!v || 'กรุณากรอกชื่อวีดีโอ']"
                             required
                     ></v-text-field>
                   </v-col>
@@ -51,7 +51,7 @@
                               :items="type"
                               item-text="type"
                               item-value="typeid"
-                              :rules="[(v) => !!v || 'Item is required']"
+                              :rules="[(v) => !!v || 'กรุณาเลือกประเภทของวีดีโอ']"
                               required
                       ></v-select>
                     </v-col>
@@ -66,7 +66,7 @@
                               :items="category"
                               item-text="category"
                               item-value="categoryid"
-                              :rules="[(v) => !!v || 'Item is required']"
+                              :rules="[(v) => !!v || 'กรุณาเลือกหมวดหมู่ของวีดีโอ']"
                               required
                       ></v-select>
                     </v-col>
