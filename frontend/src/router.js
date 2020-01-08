@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import App from './App'
 import RateUP from './components/RateUP'
 import Member from './components/Member'
+import addVideo from './components/addVideo'
 
 
 Vue.use(VueRouter)
@@ -28,6 +29,12 @@ const router = new VueRouter({
                     path: 'Member',
                     component: Member,
                 },
+
+                {
+                    path: 'addVideo',
+                    component: addVideo,
+                },
+
             ]
 
         }
