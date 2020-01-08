@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App'
 import RateUP from './components/RateUP'
+import Member from './components/Member'
+
 
 Vue.use(VueRouter)
 
@@ -19,6 +21,12 @@ const router = new VueRouter({
                 {
                     path: 'rates',
                     component: RateUP,
+                },
+
+                
+                {
+                    path: 'Member',
+                    component: Member,
                 },
             ]
 
