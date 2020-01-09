@@ -14,7 +14,7 @@
           width="40"
         />
 
-        <span>ระบบให้คะแนนการใช้งาน</span>
+        <span>Library System</span>
       </div>
 
       <v-spacer></v-spacer>
