@@ -4,7 +4,7 @@ import com.example.demo.repository.EducationLevelRepo;
 
 import java.util.List;
 
-import com.example.demo.entity.EducationLevel;;
+import com.example.demo.entity.EducationLevel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

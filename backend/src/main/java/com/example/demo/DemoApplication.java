@@ -34,7 +34,8 @@ public class DemoApplication {
 						ProvinceRepository provinceRepository,
 						BookTypeRepository booktypeRepository,
 						LanguageRepository languageRepository,
-						NumberRepository numberRepository) {
+						NumberRepository numberRepository,
+						BookStatusRepository bookStatusRepository){
 	
 		return args -> {
 
@@ -94,7 +95,12 @@ public class DemoApplication {
         });
 
 
-
+		Stream.of("สมบูรณ์ 100 %" , "ฉีกขาดบางหน้า" , "ฉีกขาดหลายหน้า" , "ชำรุดหนัก" , "สูญหาย")
+			.forEach(bookStatusName -> {
+			BookStatus bookStatus = new BookStatus();
+			bookStatus.setBookStatusName(bookStatusName);
+			bookStatusRepository.save(bookStatus);
+		});
 
 		};
 	}
