@@ -28,8 +28,7 @@ public class DemoApplication {
 	}
 
 	@Bean
-	ApplicationRunner init(TypeRepository typeRepository, CategoryRepository categoryRepository, LibrarianRepository librarianRepository,
-						MemberRepository memberRepository,
+	ApplicationRunner init(MemberRepository memberRepository,
 						MemtypeRepository memtypeRepository,
 						PrefixRepository prefixRepository,
 						ProvinceRepository provinceRepository,
@@ -38,17 +37,6 @@ public class DemoApplication {
 						NumberRepository numberRepository) {
 	
 		return args -> {
-			Stream.of("AAA").forEach(type -> {
-				Type types = new Type();
-				types.setType(type);
-				typeRepository.save(types);
-			});
-
-			Stream.of("SSSS").forEach(category -> {
-				Category categorys = new Category();
-				categorys.setCategory(category);
-				categoryRepository.save(categorys);
-			});
 
 			Stream.of("กระบี่","กรุงเทพมหานคร","กาญจนบุรี","กาฬสินธุ์","กำแพงเพชร","ขอนแก่น","จันทบุรี","ฉะเชิงเทรา" ,"ชลบุรี",
 			"ชัยนาท","ชัยภูมิ","ชุมพร","เชียงราย","เชียงใหม่","ตรัง","ตราด","ตาก","นครนายก","นครปฐม","นครพนม",
