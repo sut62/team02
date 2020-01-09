@@ -29,7 +29,7 @@ public class Borrow {
     
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
-    @JoinColumn(name = "Member_ID", insertable = true)
+    @JoinColumn(name = "Member_ID", insertable = true,nullable = false)
     //@JoinColumn(name = "Member_ID")
     private Member member;
 

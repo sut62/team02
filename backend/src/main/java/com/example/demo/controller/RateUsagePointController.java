@@ -11,7 +11,7 @@ import com.example.demo.entity.Rating;
 import com.example.demo.repository.EducationLevelRepo;
 import com.example.demo.repository.RateUsagePointRepo;
 import com.example.demo.repository.RatingRepo;
-import com.example.demo.repository.StatusRepo;
+import com.example.demo.repository.StatusRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -36,7 +36,7 @@ public class RateUsagePointController{
     private RatingRepo  ratingRepo;
 
     @Autowired
-    private StatusRepo statusRepo;
+    private StatusRepository statusRepository;
 
     @GetMapping("/RateUsage")
     public List<RateUsagePoint> getRateUsagePoint(){
@@ -48,7 +48,7 @@ public class RateUsagePointController{
 
         RateUsagePoint newRateUP = new RateUsagePoint();
         EducationLevel edlevel = eduRepo.findById(Long.valueOf(body.get("edlevel").toString())).get();
-        Status status = statusRepo.findById(Long.valueOf(body.get("status").toString())).get();
+        Status status = statusRepository.findById(Long.valueOf(body.get("status").toString())).get();
         Rating rating = ratingRepo.findById(Long.valueOf(body.get("rating").toString())).get();
 
         newRateUP.setStatus(status);

@@ -46,16 +46,16 @@ public class Remand {
      @Column(name = "Remanddate")
      private Date remanddate;
 
-    @Column(name = "StatusName")
-    private @NonNull String statusName;
+    @ManyToOne
+    private @NonNull Status statusName;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Borrow.class)     //เชื่อมความสัมพันธุ์แบบ ManyToOne กับ Entity เป้าหมาย คือ Borrow   //เป็น FK ที่ชีี้ไปที่ PK ของ Borrow ไม่มั่นใจ
     @JoinColumn(name = "borrowID", insertable = true)                     
     private Borrow borrow; 
 
-    /*@ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)                         
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)                         
     @JoinColumn(name = "memberID", insertable = true)    //ไป Join กับ Column ที่ชื่อ memberID โดยให้ insertable(เพิ่มลงตารางหรือไม่)  = true
-    private @NonNull Member member;*/
+    private @NonNull Member member;
    
 
 

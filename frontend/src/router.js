@@ -6,6 +6,7 @@ import Member from './components/Member'
 import addVideo from './components/addVideo'
 import AddBook from './components/AddBook'
 
+import Remand from './components/Remand'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,10 @@ const router = new VueRouter({
                 {
                     path: '',
                     redirect: 'rates'
+                },
+                {
+                    path:'remand',
+                    component: Remand
                 },
                 {
                     path: 'rates',

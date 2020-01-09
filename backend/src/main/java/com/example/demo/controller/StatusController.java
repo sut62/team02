@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
-import com.example.demo.repository.StatusRepo;
+import com.example.demo.repository.StatusRepository;
 import com.example.demo.entity.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class StatusController{
 
     @Autowired
-    private StatusRepo statusRepo;
+    private StatusRepository statusRepository;
 
     @GetMapping("/status")
     public List<Status> getStatus(){
-        return statusRepo.findAll();
+        return statusRepository.findAll();
     }
 }
