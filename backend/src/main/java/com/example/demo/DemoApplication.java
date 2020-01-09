@@ -2,11 +2,15 @@ package com.example.demo;
 
 import com.example.demo.repository.LibrarianRepository;
 import com.example.demo.repository.*;
+import com.example.demo.repository.BookTypeRepository;
+import com.example.demo.repository.LanguageRepository;
+import com.example.demo.repository.NumberRepository;
 import com.example.demo.repository.MemtypeRepository;
 import com.example.demo.repository.TypeRepository;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.entity.*;
 import com.example.demo.entity.Type;
+import com.example.demo.entity.Number;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Librarian;
 
@@ -28,7 +32,10 @@ public class DemoApplication {
 						MemberRepository memberRepository,
 						MemtypeRepository memtypeRepository,
 						PrefixRepository prefixRepository,
-						ProvinceRepository provinceRepository) {
+						ProvinceRepository provinceRepository,
+						BookTypeRepository booktypeRepository,
+						LanguageRepository languageRepository,
+						NumberRepository numberRepository) {
 	
 		return args -> {
 			Stream.of("AAA").forEach(type -> {
@@ -69,6 +76,34 @@ public class DemoApplication {
 		memtypee.setMemtype(memtpye);
 		memtypeRepository.save(memtypee);
 	});
+    Stream.of("นิทาน", "การ์ตูน", 
+                  "สารคดี", "ประวัติศาสตร์", 
+                  "ความรู้ทั่วไป", "นิยาย","วารสาร","นิตยสาร","วิทยาศาสตร์","สังคมศาสตร์")
+                    .forEach(booktypeName -> {
+                    BookType booktype = new BookType();
+                    booktype.setBookTypeName(booktypeName);
+                    booktypeRepository.save(booktype);
+});
+        
+        Stream.of("ภาษาไทย", "ภาษาอังกฤษ" ,
+                  "ภาษาญี่ปุ่น", "ภาษาจีน" , 
+                  "ภาษาฝรั่งเศษ", "ภาษาฟิลิปปินส์" , 
+                  "ภาษาเวียดนาม","ภาษาเกาหลี","ภาษาอาหรับ","ภาษาอื่นๆ")
+                    .forEach(languageName -> {
+                    Language language = new Language(); 
+                    language.setLanguageName(languageName); 
+                    languageRepository.save(language); 
+        });
+
+        Stream.of("1 เล่ม", "2 เล่ม", 
+                  "3 เล่ม", "4 เล่ม", 
+                  "5 เล่ม", "6 เล่ม", 
+                  "7 เล่ม", "มากกว่า 7 เล่ม")
+                  .forEach(numberName -> {
+                  Number number = new Number();
+                  number.setNumberName(numberName);
+                  numberRepository.save(number);
+        });
 
 
 
