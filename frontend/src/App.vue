@@ -19,14 +19,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://www.facebook.com/inexact"
-        target="_blank"
-        text
-      >
-        <span>Contact Me</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+   
     </v-app-bar>
 
     <v-content>
