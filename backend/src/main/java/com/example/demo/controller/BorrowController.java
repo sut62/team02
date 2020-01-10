@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -27,7 +28,6 @@ import com.example.demo.entity.Document;
 import com.example.demo.entity.Memtype;
 
 @RestController
-@RequestMapping("eduLevels")
 @CrossOrigin(origins = "http://localhost:8080")
 public class BorrowController {
 
@@ -57,7 +57,7 @@ public class BorrowController {
         return borrowRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("borrow/{numbers}/{member_id}/{bookType_id}/{document_id}/{memType_id}") //can't save bcz on script on vue page is addmember
+    @PostMapping("/borrow/{numbers}/{member_id}/{bookType_id}/{document_id}/{memType_id}") //can't save bcz on script on vue page is addmember
     public Borrow newBorrow(Borrow newBorrow,
                             @PathVariable  long numbers, 
                             @PathVariable  long member_id,
@@ -73,8 +73,9 @@ public class BorrowController {
             newBorrow.setMember(member);
             newBorrow.setBookType(booktype);
             newBorrow.setDocument(document);
-			newBorrow.setNumber(numbers);
+			newBorrow.setNumbers(numbers);
             newBorrow.setMemtype(memtype);
+            newBorrow.setBorrowDate(new Date());
     
         return borrowRepository.save(newBorrow);
 
