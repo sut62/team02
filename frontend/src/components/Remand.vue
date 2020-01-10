@@ -151,7 +151,7 @@ export default {
 
   getBorrow() {        //ดึงหลังบ้านเข้า combobox 
     http
-        .get("/eduLevels/borrow")
+        .get("/borrow")
         .then(response => {
         this.borrows = response.data;
       console.log(response.data);
