@@ -61,7 +61,7 @@ class RemandController{
         //System.out.println(">>>>>>>>>>>>>>>>>" + examresultName);   
 
         BookType booktype = booktypeRepository.findById(booktypeID);        //  เอา obj typeID ไป findById
-        Borrow borrow = borrowRepository.findById(borrowID).get();
+        Borrow borrow = borrowRepository.findById(borrowID);
         Status status = statusRepository.findById(statusID).get();
 
         newRemand.setMember(borrow.getMember());
