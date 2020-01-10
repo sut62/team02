@@ -7,5 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface BorrowRepository extends JpaRepository<Borrow, Long>{
-
+    public  Borrow findById(long borrowid);
 }

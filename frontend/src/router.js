@@ -5,6 +5,7 @@ import RateUP from './components/RateUP'
 import Member from './components/Member'
 import addVideo from './components/addVideo'
 import AddBook from './components/AddBook'
+import borrow from './components/borrow'
 
 import Remand from './components/Remand'
 
@@ -41,9 +42,13 @@ const router = new VueRouter({
                     component: addVideo,
                 },
                 {
+                    path: 'borrow',
+                    component: borrow,
+                },
+                {
                     path: 'AddBook',
-                    component: AddBook,
-                    },
+                    component: AddBook
+                }
 
             ]
 
