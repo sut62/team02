@@ -10,6 +10,7 @@
         <v-btn text to="/rates">ให้คะแนน</v-btn>
         <v-btn text to="/Member">สมาชิก</v-btn>
         <v-btn text to="/addVideo">เพิ่มวิดีโอ</v-btn>
+        <v-btn text to="/AddBook">เพิ่มหนังสือ</v-btn>
         <v-btn text to="/borrow">ยืมหนังสือ</v-btn>
         
       </v-toolbar-items>

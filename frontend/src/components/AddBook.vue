@@ -1,11 +1,11 @@
 <template>
   <v-container>
-     <v-app-bar app color="blue darken-2" dark>
-       <v-app-bar-nav-icon></v-app-bar-nav-icon> <!-- @click.stop="drawer = !drawer" -->
+    <!-- <v-app-bar app color="blue darken-2" dark>
+       <v-app-bar-nav-icon></v-app-bar-nav-icon> @click.stop="drawer = !drawer" 
       <v-toolbar-title>ระบบห้องสมุด</v-toolbar-title>
-        <div class="flex-grow-1"></div>
+        <div class="flex-grow-1"></div> 
 
-    </v-app-bar>
+    </v-app-bar>-->
      <v-container>
       <div>
         <v-responsive>
