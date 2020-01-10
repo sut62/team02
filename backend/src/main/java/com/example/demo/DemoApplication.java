@@ -88,7 +88,10 @@ public class DemoApplication {
                   "3 เล่ม", "4 เล่ม", 
                   "5 เล่ม", "6 เล่ม", 
 				  "7 เล่ม", "8 เล่ม",
-				  "9 เล่ม ","10 เล่ม" )
+				  "9 เล่ม ","10 เล่ม",
+				  "11 เล่ม" ,"12 เล่ม" ,
+				  "13 เล่ม" ,"14 เล่ม" ,
+				  "15 เล่ม"  )
                   .forEach(numberName -> {
                   Number number = new Number();
                   number.setNumberName(numberName);
