@@ -87,7 +87,8 @@ public class DemoApplication {
         Stream.of("1 เล่ม", "2 เล่ม", 
                   "3 เล่ม", "4 เล่ม", 
                   "5 เล่ม", "6 เล่ม", 
-                  "7 เล่ม", "มากกว่า 7 เล่ม")
+				  "7 เล่ม", "8 เล่ม",
+				  "9 เล่ม ","10 เล่ม" )
                   .forEach(numberName -> {
                   Number number = new Number();
                   number.setNumberName(numberName);
