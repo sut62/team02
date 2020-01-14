@@ -12,24 +12,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import lombok.*;
 
+
 @Entity
-@Setter@Getter
+@Builder
 @NoArgsConstructor
 @Data
-@ToString
-@EqualsAndHashCode
+@AllArgsConstructor
 @Table(name="Borrow")
 public class Borrow {
 
     @Id
     @GeneratedValue
     @Column(unique = true)
-    private @NonNull Long borrowId;
-    private @NonNull Long numbers;
+    private @NotNull Long borrowId;
+    private @NotNull(message = "Notnull") Long numbers;
     private @NotNull Date borrowDate;
+    @Size(max = 25, message = "Joe")
+    private String Descripton;
+    @Pattern(regexp = "\\d{10}", message = "error")
+    private String tell;
+
     
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
@@ -40,17 +47,17 @@ public class Borrow {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookType.class)
     @JoinColumn(name = "booktype", insertable = true)
     //@JoinColumn(name = "booktype")
-    private @NonNull BookType bookType;
+    private  BookType bookType;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Document.class)
     @JoinColumn(name = "documentId", insertable = true)
     //@JoinColumn(name = "booktype")
-    private @NonNull Document document;
+    private  Document document;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Memtype.class)
     @JoinColumn(name = "Memtype", insertable = true)
     //@JoinColumn(name = "Memtype")
-    private @NonNull Memtype memtype;
+    private Memtype memtype;
 
    
 }
