@@ -10,15 +10,15 @@ import javax.persistence.Entity;
 
 @Entity                 
 @Data                   //เข้าใจ getter setter อัตโนมัติ เราจึงไม่สร้างก็ได้ 
-@Table(name="number")   
+@Table(name="bookcategory")   
 @NoArgsConstructor
-public class Number {  
+public class BookCategory {  
     @Id                                                                      
-    @SequenceGenerator(name="number_seq",sequenceName="number_seq")          
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="number_seq")
-    @Column(name="numberId",unique = true, nullable = false)          
+    @SequenceGenerator(name="bookcategory_seq",sequenceName="bookcategory_seq")          
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="bookcategory_seq")
+    @Column(name="bookcategoryId",unique = true, nullable = false)          
 
     private @NonNull Long id;                                        
-    private @NonNull String numberName;          
+    private @NonNull String bookCategoryName;          
     
 }
