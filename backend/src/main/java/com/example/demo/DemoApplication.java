@@ -85,7 +85,7 @@ public class DemoApplication {
         });
 
         Stream.of("หนังสือ", "นิตยสาร", 
-                  "หนังพิมพ์", "บทความ"
+                  "หนังสือพิมพ์", "บทความ"
                    )
                   .forEach(bookCategoryName -> {
                   BookCategory bookcategory = new BookCategory();
