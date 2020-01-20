@@ -31,7 +31,9 @@ public class Document { //บอกตำแหน่งปัจจุบัน
     @Column(name="bookName")
     private @NonNull String bookName;                     
     @Column(name="writterName")
-    private @NonNull String writterName;      
+    private @NonNull String writterName;    
+    @Column(name="amount")
+    private @NonNull int amount;    
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookType.class)
     @JoinColumn(name = "booktypeID", insertable = true)
@@ -41,9 +43,9 @@ public class Document { //บอกตำแหน่งปัจจุบัน
     @JoinColumn(name = "languageID", insertable = true)
     private @NonNull Language language;  
    
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Number.class)   
-    @JoinColumn(name = "numberID", insertable = true)
-    private @NonNull Number number;
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookCategory.class)   
+    @JoinColumn(name = "bookcategoryID", insertable = true)
+    private @NonNull BookCategory bookCategory;
 
                            
 }
