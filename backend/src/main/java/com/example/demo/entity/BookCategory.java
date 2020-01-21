@@ -16,7 +16,7 @@ import javax.persistence.Entity;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Number {
+public class BookCategory {
     @Id
     @SequenceGenerator(name = "number_seq", sequenceName = "number_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "number_seq")
@@ -24,6 +24,6 @@ public class Number {
 
     private Long id;
     @NotNull
-    private String numberName;
+    private String bookCategoryName;
 
 }

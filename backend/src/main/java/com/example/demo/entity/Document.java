@@ -43,20 +43,12 @@ public class Document { // บอกตำแหน่งปัจจุบั�
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Language.class)
     @JoinColumn(name = "languageID", insertable = true)
-<<<<<<< HEAD
-    private @NonNull Language language;  
+    @NotNull
+    private Language language;  
    
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookCategory.class)   
     @JoinColumn(name = "bookcategoryID", insertable = true)
-    private @NonNull BookCategory bookCategory;
-=======
     @NotNull
-    private @NonNull Language language;
-
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Number.class)
-    @JoinColumn(name = "numberID", insertable = true)
-    @NotNull
-    private @NonNull Number number;
->>>>>>> close #68 - ทำtestของระบบยิมหนังสือนิดหน่อย :tada:
+    private BookCategory bookCategory;
 
 }
