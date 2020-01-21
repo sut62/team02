@@ -1,12 +1,31 @@
 package com.example.demo.controller; //กำลังบอกว่า package นี้ เป็นของ Controller
+
 import com.example.demo.entity.*; //import entity ทุกอันมาไว้ในนี้
 import com.example.demo.entity.BookCategory;
-import com.example.demo.repository.*;                     //import repo ทุกอันมาไว้ในนี้
+import com.example.demo.repository.*;
+import com.fasterxml.jackson.databind.JsonNode;
+
+//import repo ทุกอันมาไว้ในนี้
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.net.URLDecoder;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -43,7 +62,8 @@ class DocumentController{                           //บอกตำแหน�
 
     @PathVariable long booktypeID,
     @PathVariable long languageID,
-    @PathVariable long bookcategoryID ) {
+    @PathVariable long bookcategoryID ,
+    @RequestBody Map<String, String> body) {
         
         System.out.println(">>>>>>>>>>>>>>>>>" + bookName);
         System.out.println(">>>>>>>>>>>>>>>>>" + writterName);
@@ -56,6 +76,11 @@ class DocumentController{                           //บอกตำแหน�
         newDocument.setBookType(booktype);
         newDocument.setLanguage(language);
         newDocument.setBookCategory(bookcategory);
+        newDocument.setAmount(Integer.valueOf(body.get("amount").toString()));
+        newDocument.setBookName(body.get("bookName"));
+        newDocument.setWritterName(body.get("writterName"));
+  
+       
                                        
         return documentRepository.save(newDocument);
     }
