@@ -32,7 +32,9 @@ import com.example.demo.repository.ProvinceRepository;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -41,7 +43,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @DataJpaTest
 // @SpringBootTest
-@RunWith(SpringRunner.class)
+// @RunWith(SpringRunner.class)
 public class BorrowTests {
     private Validator validator;
     @Autowired
@@ -80,7 +82,7 @@ public class BorrowTests {
     private Prefix prefix;
     private Province province;
 
-    @Before
+    @BeforeEach
     public void setup() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
@@ -112,7 +114,7 @@ public class BorrowTests {
         document = documentRepository.saveAndFlush(document);
     }
 
-    @After
+    @AfterEach
     public void destroy() {
         bookTypeRepository.deleteAll();
         languageRepository.deleteAll();
