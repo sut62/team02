@@ -11,22 +11,22 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import com.example.demo.entity.BookCategory;
 import com.example.demo.entity.BookType;
 import com.example.demo.entity.Borrow;
 import com.example.demo.entity.Document;
 import com.example.demo.entity.Language;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Memtype;
-import com.example.demo.entity.Number;
 import com.example.demo.entity.Prefix;
 import com.example.demo.entity.Province;
+import com.example.demo.repository.BookCategoryRepository;
 import com.example.demo.repository.BookTypeRepository;
 import com.example.demo.repository.BorrowRepository;
 import com.example.demo.repository.DocumentRepository;
 import com.example.demo.repository.LanguageRepository;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.repository.MemtypeRepository;
-import com.example.demo.repository.NumberRepository;
 import com.example.demo.repository.PrefixRepository;
 import com.example.demo.repository.ProvinceRepository;
 
@@ -60,7 +60,7 @@ public class BorrowTests {
     private LanguageRepository languageRepository;
 
     @Autowired
-    private NumberRepository numberRepository;
+    private BookCategoryRepository bookCategoryRepository;
 
     @Autowired
     private PrefixRepository prefixRepository;
@@ -76,7 +76,7 @@ public class BorrowTests {
     private Member member;
     private Memtype memType;
     private Language language;
-    private Number number;
+    private BookCategory bookCategory;
     private Prefix prefix;
     private Province province;
 
@@ -91,8 +91,8 @@ public class BorrowTests {
         language = Language.builder().languageName("Japan").build();
         language = languageRepository.saveAndFlush(language);
 
-        number = Number.builder().numberName("12").build();
-        number = numberRepository.saveAndFlush(number);
+        bookCategory = BookCategory.builder().bookCategoryName("Dojin").build();
+        bookCategory = bookCategoryRepository.saveAndFlush(bookCategory);
 
         prefix = Prefix.builder().prefix("Dr.").build();
         prefix = prefixRepository.saveAndFlush(prefix);
@@ -108,7 +108,7 @@ public class BorrowTests {
         member = memberRepository.saveAndFlush(member);
 
         document = Document.builder().bookName("Doujin").bookType(bookType).writterName("Joe Kim").language(language)
-                .number(number).build();
+                .bookCategory(bookCategory).build();
         document = documentRepository.saveAndFlush(document);
     }
 
@@ -116,7 +116,7 @@ public class BorrowTests {
     public void destroy() {
         bookTypeRepository.deleteAll();
         languageRepository.deleteAll();
-        numberRepository.deleteAll();
+        bookCategoryRepository.deleteAll();
         prefixRepository.deleteAll();
         provinceRepository.deleteAll();
         memTypeRepository.deleteAll();
@@ -135,7 +135,7 @@ public class BorrowTests {
         assertEquals("0987451150", found.get().getTell());
         assertEquals("Erotic", found.get().getBookType().getBookTypeName());
         assertEquals("Japan", found.get().getDocument().getLanguage().getLanguageName());
-        assertEquals("12", found.get().getDocument().getNumber().getNumberName());
+        assertEquals("Dojin", found.get().getDocument().getBookCategory().getBookCategoryName());
         assertEquals("1", found.get().getNumbers().toString());
         assertEquals("Dr.", found.get().getMember().getPrefix().getPrefix());
         assertEquals("Bangkok", found.get().getMember().getProvince().getProvince());
