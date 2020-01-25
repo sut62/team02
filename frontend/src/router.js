@@ -13,12 +13,7 @@ import Remand from './components/Remand'
 
 import ShowMember from './components/ShowMember'
 import home from './components/home'
-<<<<<<< HEAD
 import showHistory from './components/showHistory'
-=======
-import home from './components/showHistory'
-
->>>>>>> 6d3bb658ec929f796b3933d974bdcb01a7645421
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -69,11 +64,6 @@ const router = new VueRouter({
                     component: home,
                 },
                 {
-<<<<<<< HEAD
-                    path: 'showHistory',
-                    component: showHistory,
-                }
-=======
                     path: 'viewdocument',
                     component: ViewDocument
                 },
@@ -90,7 +80,6 @@ const router = new VueRouter({
                             component: showHistory                     
                         }
 
->>>>>>> 6d3bb658ec929f796b3933d974bdcb01a7645421
 
 
             ]
