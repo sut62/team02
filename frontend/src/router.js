@@ -7,6 +7,7 @@ import addVideo from './components/addVideo'
 import AddBook from './components/AddBook'
 import borrow from './components/borrow'
 import ViewDocument from './components/ViewDocument'
+import viewVideo from './components/viewVideo'
 
 import Remand from './components/Remand'
 
@@ -64,6 +65,10 @@ const router = new VueRouter({
                 {
                     path: 'viewdocument',
                     component: ViewDocument
+                },
+                {
+                    path: 'viewVideo',
+                    component: viewVideo
                 }
 
 
