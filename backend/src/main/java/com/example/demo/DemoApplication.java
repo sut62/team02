@@ -67,7 +67,7 @@ public class DemoApplication {
 	});
     Stream.of("นิทาน", "การ์ตูน", 
                   "สารคดี", "ประวัติศาสตร์", 
-                  "ความรู้ทั่วไป", "นิยาย","หนังสือเด็ก","","วิทยาศาสตร์","สังคมศาสตร์")
+                  "ความรู้ทั่วไป", "นิยาย","หนังสือเด็ก","วิทยาศาสตร์","สังคมศาสตร์")
                     .forEach(booktypeName -> {
                     BookType booktype = new BookType();
                     booktype.setBookTypeName(booktypeName);
