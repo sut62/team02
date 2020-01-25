@@ -107,7 +107,11 @@ public class BorrowTests {
         memType = Memtype.builder().memtype("Government").build();
         memType = memTypeRepository.saveAndFlush(memType);
 
+<<<<<<< HEAD
         member = Member.builder().idcard("1234567890123").memtype(memType).name("Paknahee").prefix(prefix).province(province)
+=======
+        member = Member.builder().idcard("ASD123").memtype(memType).name("Paknahee").prefix(prefix).province(province)
+>>>>>>> 6d3bb658ec929f796b3933d974bdcb01a7645421
                 .build();
         member = memberRepository.saveAndFlush(member);
 
@@ -145,7 +149,11 @@ public class BorrowTests {
         assertEquals("Dr.", found.get().getMember().getPrefix().getPrefix());
         assertEquals("Bangkok", found.get().getMember().getProvince().getProvince());
         assertEquals("Government", found.get().getMemtype().getMemtype());
+<<<<<<< HEAD
         assertEquals("1234567890123", found.get().getMember().getIdcard());
+=======
+        assertEquals("ASD123", found.get().getMember().getIdcard());
+>>>>>>> 6d3bb658ec929f796b3933d974bdcb01a7645421
         assertEquals("Paknahee", found.get().getMember().getName());
         assertEquals("Doujin", found.get().getDocument().getBookName());
         assertEquals("Joe Kim", found.get().getDocument().getWritterName());

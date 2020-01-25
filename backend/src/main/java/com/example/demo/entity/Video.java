@@ -23,7 +23,7 @@ import javax.persistence.FetchType;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name="Video" , uniqueConstraints = @UniqueConstraint(columnNames = {"VIDEO_NAME" , "VIDEO_CODE"}))
+@Table(name="Video" , uniqueConstraints = @UniqueConstraint(columnNames = {"VIDEO_CODE"}))
 public class Video {
 
     @Id

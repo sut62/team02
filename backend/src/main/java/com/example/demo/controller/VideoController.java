@@ -63,7 +63,7 @@ public class VideoController {
 
             newVideo.setLibrarian(librarian);
             newVideo.setVideoName(videoName);
-            newVideo.setVideoName(videoCode);
+            newVideo.setVideoCode(videoCode);
             newVideo.setType(type);
             newVideo.setCategory(category);
             

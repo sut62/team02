@@ -25,7 +25,7 @@
         <v-btn text to="/borrow">ยืมหนังสือ</v-btn> <v-divider inset vertical></v-divider>
         <v-btn text to="/remand">คืนหนังสือ</v-btn> <v-divider inset vertical></v-divider>
         <v-btn text to="/rates">ให้คะแนน</v-btn> <v-divider inset vertical></v-divider>
-       <v-divider inset vertical></v-divider>
+        <v-btn text to="/viewdocument">รายการหนังสือ</v-btn> <v-divider inset vertical></v-divider>
 
 
       </v-toolbar-items>
