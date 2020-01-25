@@ -1,88 +1,265 @@
-package com.example.demo.controller; //กำลังบอกว่า package นี้ เป็นของ Controller
+package com.example.demo;
 
-import com.example.demo.entity.*; //import entity ทุกอันมาไว้ในนี้
-import com.example.demo.entity.BookCategory;
-import com.example.demo.repository.*;
-import com.fasterxml.jackson.databind.JsonNode;
-
-//import repo ทุกอันมาไว้ในนี้
-
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.dao.DataIntegrityViolationException;
 
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.Collection;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
+import com.example.demo.entity.BookCategory;
+import com.example.demo.entity.BookType;
+import com.example.demo.entity.Document;
+import com.example.demo.entity.Language;
+import com.example.demo.repository.BookCategoryRepository;
+import com.example.demo.repository.BookTypeRepository;
+import com.example.demo.repository.DocumentRepository;
+import com.example.demo.repository.LanguageRepository;
+
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.net.URLDecoder;
+import java.util.Set;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
-import org.springframework.web.bind.annotation.CrossOrigin;
-@RestController                                     //บังคับให้ class นี้เป็น Controller
-@CrossOrigin(origins = "http://localhost:8080")     //ทำให้ spingboot , vue ส่งข้อมูหากันได้
-class DocumentController{                           //บอกตำแหน่งปัจจุบัน 
-    @Autowired                                      //สร้างผู้ช่วย ที่คอยสั่ง Repo ให้ทำงานอัตโนมัติ
-    private DocumentRepository documentRepository;  //สร้าง Obj ชื่อ documentRepo.. ชนิด DocumentRepo.. เพื่อใช้งาน Entity Document
-    @Autowired                                      //สร้างผู้ช่วย ที่คอยสั่ง Repo ให้ทำงานอัตโนมัติ
-    private BookTypeRepository booktypeRepository;    
-    @Autowired                                      //สร้างผู้ช่วย ที่คอยสั่ง Repo ให้ทำงานอัตโนมัติ
-    private LanguageRepository languageRepository;  
-    @Autowired                                      //สร้างผู้ช่วย ที่คอยสั่ง Repo ให้ทำงานอัตโนมัติ
-    private BookCategoryRepository bookcategoryRepository;      
+@DataJpaTest
+public class DocumentTest {
+
+    private Validator validator;
+
+    @Autowired
+    DocumentRepository DocumentRepository;
+
+    @BeforeEach
+    public void setup() {
+        final ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        validator = factory.getValidator();
+    }
+
+    @Test
+    void testCreateDocumentOK() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName("Head First");
+        document.setWritterName("Bert Bates");
+		document = DocumentRepository.saveAndFlush(document);
+
+		Optional<Document> Document = DocumentRepository.findById(document.getId());
+        
+        assertEquals(1L, Document.get().getId());
+        assertEquals(1, Document.get().getAmount());
+        assertEquals("Head First", Document.get().getBookName());
+        assertEquals("Bert Bates", Document.get().getWritterName());
+    }
+
+	@Test
+    void testDocumentIdMustNotBeNull() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(null);
+        document.setBookName("Head First");
+        document.setWritterName("Bert Bates");
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("must not be null", v.getMessage());
+        assertEquals("id", v.getPropertyPath().toString());
+    }
+
+    @Test
+    void testWritterNameMustNotBeNull() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName("Head First");
+        document.setWritterName(null);
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("must not be null", v.getMessage());
+        assertEquals("writterName", v.getPropertyPath().toString());
+    }
+
+    @Test
+    void testBookNameMustNotBeNull() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName(null);
+        document.setWritterName("Bert Bates");
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("must not be null", v.getMessage());
+        assertEquals("bookName", v.getPropertyPath().toString());
+    }
+
+    @Test
+    void testAmountMustNotBeNull() {
+        Document document = new Document();
+        document.setAmount(null);
+        document.setId(1L);
+        document.setBookName("Head First");
+        document.setWritterName("Bert Bates");
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("must not be null", v.getMessage());
+        assertEquals("amount", v.getPropertyPath().toString());
+    }
     
-    DocumentController(DocumentRepository documentRepository,BookTypeRepository booktypeRepository,LanguageRepository languageRepository,BookCategoryRepository bookcategoryRepository) {
-        this.documentRepository = documentRepository;
-        this.booktypeRepository = booktypeRepository;
-        this.bookcategoryRepository = bookcategoryRepository;
-        this.languageRepository = languageRepository;
+
+    @Test
+    void testWritterNameNotLessThan2() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName("Head First");
+        document.setWritterName("B");
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("size must be between 2 and 20", v.getMessage());
+        assertEquals("writterName", v.getPropertyPath().toString());
     }
 
-    @GetMapping("/document")                                                       // get ข้อมูลตาม พาท ที่กำหนดจากหน้าเว็บ 9000/documents
-    public Collection<Document> Documents() {                                    // ดึงข้อมูลจากใน Entity <Document> โดยทำเป็น collection 
-        return documentRepository.findAll().stream().collect(Collectors.toList());  // ส่งค่าทั้งหมดใน document return ไปแสดงที่หน้า 9000/document โดยส่งทั้งหมดออกไปเป็น list
+    @Test
+    void testWritterNameNotMoreThan20() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName("Head First");
+        document.setWritterName("Bert Bates Writter Of this book");
+
+        Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("size must be between 2 and 20", v.getMessage());
+        assertEquals("writterName", v.getPropertyPath().toString());
     }
 
-    @PostMapping("/document/{bookName}/{writterName}/{amount}/{booktypeID}/{languageID}/{bookcategoryID}")
-    public Document newDocument( Document newDocument,
-    @PathVariable String bookName,
-    @PathVariable String writterName,
-    @PathVariable int amount,
+    @Test
+    void testWritterNameNotEnterSpecialCharactor() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName("Head First");
+        document.setWritterName("Bert !#%@%");
 
-    @PathVariable long booktypeID,
-    @PathVariable long languageID,
-    @PathVariable long bookcategoryID ,
-    @RequestBody Map<String, String> body) {
-        
-        System.out.println(">>>>>>>>>>>>>>>>>" + bookName);
-        System.out.println(">>>>>>>>>>>>>>>>>" + writterName);
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("must match \"^[A-Za-zก-์\\s]+$\"", v.getMessage());
+        assertEquals("writterName", v.getPropertyPath().toString());
+    }
 
-        BookType booktype= booktypeRepository.findById(booktypeID);
-        Language language = languageRepository.findById(languageID);
-        BookCategory bookcategory =  bookcategoryRepository.findById(bookcategoryID);
+    @Test
+    void testBookNameNotLessThan2() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName("H");
+        document.setWritterName("Bert Bates");
 
-        
-        newDocument.setBookType(booktype);
-        newDocument.setLanguage(language);
-        newDocument.setBookCategory(bookcategory);
-        newDocument.setAmount(Integer.valueOf(body.get("amount").toString()));
-        newDocument.setBookName(body.get("bookName"));
-        newDocument.setWritterName(body.get("writterName"));
-  
-       
-                                       
-        return documentRepository.save(newDocument);
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("size must be between 2 and 10", v.getMessage());
+        assertEquals("bookName", v.getPropertyPath().toString());
+    }
+
+    @Test
+    void testBookNameNotMoreThan10() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName("Head Firsts");
+        document.setWritterName("Bert Bates");
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("size must be between 2 and 10", v.getMessage());
+        assertEquals("bookName", v.getPropertyPath().toString());
+    }
+
+    @Test
+    void testBookNameNotEnterSpecialCharactor() {
+        Document document = new Document();
+        document.setAmount(1);
+        document.setId(1L);
+        document.setBookName("Head @$#@");
+        document.setWritterName("Bert Bates");
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("must match \"^[A-Za-zก-์\\s]+$\"", v.getMessage());
+        assertEquals("bookName", v.getPropertyPath().toString());
+    }
+
+    @Test
+    void testAmountNotLessThan1() {
+        Document document = new Document();
+        document.setAmount(0);
+        document.setId(1L);
+        document.setBookName("Head First");
+        document.setWritterName("Bert Bates");
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("must be greater than or equal to 1", v.getMessage());
+        assertEquals("amount", v.getPropertyPath().toString());
+    }
+
+    @Test
+    void testAmountNotMoreThan20() {
+        Document document = new Document();
+        document.setAmount(21);
+        document.setId(1L);
+        document.setBookName("Head First");
+        document.setWritterName("Bert Bates");
+
+		Set<ConstraintViolation<Document>> result = validator.validate(document);
+		
+		assertEquals(1, result.size());
+		
+        ConstraintViolation<Document> v = result.iterator().next();
+        assertEquals("must be less than or equal to 20", v.getMessage());
+        assertEquals("amount", v.getPropertyPath().toString());
     }
 }
-
