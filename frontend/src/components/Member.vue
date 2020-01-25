@@ -1,11 +1,19 @@
 <template>
 
-    <center>
+    <center> <v-navigation-drawer
+     
+     
+      src="https://scontent.fbkk12-3.fna.fbcdn.net/v/t1.15752-9/83149502_2972070209470311_7682216390979223552_n.png?_nc_cat=102&_nc_oc=AQn4LgMsKisZbkkghs5GtLM8F8xwOKG0msr91guVADUANdorhkXRG96Sa5jCJLQMpvE&_nc_ht=scontent.fbkk12-3.fna&oh=361fa5fd23d568656481120b7818b191&oe=5E99086F"
+      width="500%"
+      height="700"
+    
+    > 
       <v-form v-model="valid" ref="form"> 
+      
           <v-card class="mx-auto" max-width="100%">
 
          
-                <v-toolbar color="blue darken-2" dark flat>
+                <v-toolbar color="pink" dark flat>
                 <v-toolbar-title>ระบบลงทะเบียนสมาชิก</v-toolbar-title>
                 </v-toolbar>
             
@@ -99,11 +107,11 @@
                 
                 <v-card-actions>
                   
-                  <v-btn color="primary" @click="saveMember">บันทึกข้อมูล</v-btn>
+                  <v-btn color="pink" dark flat @click="saveMember">บันทึกข้อมูล</v-btn>
                        
                         <v-spacer></v-spacer>
 
-                 <v-btn color="error" to="/ShowMember">แสดงรายชื่อผู้ลงทะเบียนสมาชิก</v-btn>
+                 <v-btn color="pink" dark flat to="/ShowMember">แสดงรายชื่อผู้ลงทะเบียนสมาชิก</v-btn>
                     
               </v-card-actions>
                   
@@ -111,14 +119,17 @@
                   
                     </v-card> 
 
-                     
+                 
       </v-form>
+       </v-navigation-drawer>     
       <v-snackbar v-model="snackbar">
                   {{ message }}
                 <v-btn text color="red" @click="snackbar = !snackbar">ปิด</v-btn>
               </v-snackbar>
    </center>
-    
+
+
+  
 </template>
 
 

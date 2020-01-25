@@ -28,7 +28,7 @@ public class Province {
   @Column(name = "province_ID", unique = true, nullable = true)
   private Long provinceid;
 
-  @NotNull
+  @NotNull(message = "province Must Not Be Null")
   private String province;
 
 }
