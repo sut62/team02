@@ -42,7 +42,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testCreateDocumentOK() {
+    void B5906222_testCreateDocumentOK() {
         Document document = new Document();
         document.setAmount(1);
         document.setBookName("Head First");
@@ -56,7 +56,7 @@ public class DocumentTest {
     }
 
 	@Test
-    void testDocumentIdMustNotBeNull() {
+    void B5906222_testDocumentIdMustNotBeNull() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(null);
@@ -73,7 +73,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testWritterNameMustNotBeNull() {
+    void B5906222_testWritterNameMustNotBeNull() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(1L);
@@ -90,7 +90,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testBookNameMustNotBeNull() {
+    void B5906222_testBookNameMustNotBeNull() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(1L);
@@ -107,7 +107,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testAmountMustNotBeNull() {
+    void B5906222_testAmountMustNotBeNull() {
         Document document = new Document();
         document.setAmount(null);
         document.setId(1L);
@@ -124,7 +124,7 @@ public class DocumentTest {
     
 
     @Test
-    void testWritterNameNotLessThan2() {
+    void B5906222_testWritterNameNotLessThan2() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(1L);
@@ -141,7 +141,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testWritterNameNotMoreThan30() {
+    void B5906222_testWritterNameNotMoreThan30() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(1L);
@@ -158,7 +158,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testWritterNameNotEnterSpecialCharactor() {
+    void B5906222_testWritterNameNotEnterSpecialCharactor() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(1L);
@@ -175,7 +175,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testBookNameNotLessThan2() {
+    void B5906222_testBookNameNotLessThan2() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(1L);
@@ -192,7 +192,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testBookNameNotMoreThan30() {
+    void B5906222_testBookNameNotMoreThan30() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(1L);
@@ -208,7 +208,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testBookNameNotEnterSpecialCharactor() {
+    void B5906222_testBookNameNotEnterSpecialCharactor() {
         Document document = new Document();
         document.setAmount(1);
         document.setId(1L);
@@ -225,7 +225,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testAmountNotLessThan1() {
+    void B5906222_testAmountNotLessThan1() {
         Document document = new Document();
         document.setAmount(0);
         document.setId(1L);
@@ -242,7 +242,7 @@ public class DocumentTest {
     }
 
     @Test
-    void testAmountNotMoreThan20() {
+    void B5906222_testAmountNotMoreThan20() {
         Document document = new Document();
         document.setAmount(21);
         document.setId(1L);
