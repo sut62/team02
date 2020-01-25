@@ -6,10 +6,11 @@ import Member from './components/Member'
 import addVideo from './components/addVideo'
 import AddBook from './components/AddBook'
 import borrow from './components/borrow'
-import ViewRateUP from './components/ViewRatingUP'
-import Remand from './components/Remand'
-import ShowMember from './components/ShowMember'
 
+import Remand from './components/Remand'
+
+import ShowMember from './components/ShowMember'
+import home from './components/home'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -21,7 +22,7 @@ const router = new VueRouter({
             children:[
                 {
                     path: '',
-                    redirect: 'rates'
+                    redirect: 'home'
                 },
                 {
                     path:'remand',
@@ -56,9 +57,10 @@ const router = new VueRouter({
                     component: ShowMember,
                 },
                 {
-                    path: 'viewRateUP',
-                    component: ViewRateUP
+                    path: 'home',
+                    component: home,
                 }
+
 
             ]
 
