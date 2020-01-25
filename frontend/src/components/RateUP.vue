@@ -9,8 +9,8 @@
                     <v-select
                         v-model="rateup.status"
                         :items="status"
-                        :rules="[v=> !!v || 'Choose your status']"
-                        label="ระบุสถานะการสมรส :"
+                        :rules="[v=> !!v || 'ระบุสถานภาพ']"
+                        label="สถานภาพ :"
                         required
                     ></v-select>
                     <v-select

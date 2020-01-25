@@ -6,7 +6,7 @@ import Member from './components/Member'
 import addVideo from './components/addVideo'
 import AddBook from './components/AddBook'
 import borrow from './components/borrow'
-
+import ViewRateUP from './components/ViewRatingUP'
 import Remand from './components/Remand'
 import ShowMember from './components/ShowMember'
 
@@ -54,6 +54,10 @@ const router = new VueRouter({
                 {
                     path: 'ShowMember',
                     component: ShowMember,
+                },
+                {
+                    path: 'viewRateUP',
+                    component: ViewRateUP
                 }
 
             ]
