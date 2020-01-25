@@ -36,7 +36,7 @@ public class BookTypeTest {
     }
 
     @Test
-    void testCreateBookTypeOK() {
+    void B5906222_testCreateBookTypeOK() {
         BookType bookType = new BookType();
         bookType.setBookTypeName("Math");
 		bookType = BookTypeRepository.saveAndFlush(bookType);
@@ -47,7 +47,7 @@ public class BookTypeTest {
     }
 
 	@Test
-    void testBookTypeIdMustNotBeNull() {
+    void B5906222_testBookTypeIdMustNotBeNull() {
         BookType bookType = new BookType();
         bookType.setBookTypeName("Math");
         bookType.setId(null);
@@ -62,7 +62,7 @@ public class BookTypeTest {
     }
     
     @Test
-    void testBookTypeNameMustNotBeNull() {
+    void B5906222_testBookTypeNameMustNotBeNull() {
         BookType bookType = new BookType();
         bookType.setBookTypeName(null);
         bookType.setId(1L);

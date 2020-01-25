@@ -36,7 +36,7 @@ public class BookCategoryTest {
     }
 
     @Test
-    void testCreateBookCategoryOK() {
+    void B5906222_testCreateBookCategoryOK() {
         BookCategory bookCategory = new BookCategory();
         bookCategory.setBookCategoryName("Fantasy");
 		bookCategory = BookCategoryRepository.saveAndFlush(bookCategory);
@@ -47,7 +47,7 @@ public class BookCategoryTest {
     }
 
 	@Test
-    void testBookCategoryIdMustNotBeNull() {
+    void B5906222_testBookCategoryIdMustNotBeNull() {
         BookCategory bookCategory = new BookCategory();
         bookCategory.setBookCategoryName("Fantasy");
         bookCategory.setId(null);
@@ -62,7 +62,7 @@ public class BookCategoryTest {
     }
     
     @Test
-    void testBookCategoryNameMustNotBeNull() {
+    void B5906222_testBookCategoryNameMustNotBeNull() {
         BookCategory bookCategory = new BookCategory();
         bookCategory.setBookCategoryName(null);
         bookCategory.setId(1L);

@@ -36,7 +36,7 @@ public class LanguageTest {
     }
 
     @Test
-    void testCreateLanguageOK() {
+    void B5906222_testCreateLanguageOK() {
         Language language = new Language();
         language.setLanguageName("English");
 		language = LanguageRepository.saveAndFlush(language);
@@ -47,7 +47,7 @@ public class LanguageTest {
     }
 
 	@Test
-    void testLanguageIdMustNotBeNull() {
+    void B5906222_testLanguageIdMustNotBeNull() {
         Language language = new Language();
         language.setLanguageName("English");
         language.setId(null);
@@ -62,7 +62,7 @@ public class LanguageTest {
     }
     
     @Test
-    void testLanguageNameMustNotBeNull() {
+    void B5906222_testLanguageNameMustNotBeNull() {
         Language language = new Language();
         language.setLanguageName(null);
         language.setId(1L);
