@@ -29,7 +29,8 @@ public class Memtype {
   // @Column(name = "memtype_ID", unique = true, nullable = true)
 
   private Long memtypeid;
-  @NotNull
+  
+  @NotNull(message = "memtype Must Not Be Null")
   private String memtype;
 
 }
