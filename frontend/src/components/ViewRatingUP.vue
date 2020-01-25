@@ -1,8 +1,8 @@
 <template>
 <v-app>
-  <v-card>
+  <v-card class="mx-auto" width="50%">
   <v-container>   
-            <v-card-title>คำร้องทุกข์ 
+            <v-card-title>ระบบแสดงและค้นหาการให้คะแนนการให้งาน
               <div class="flex-grow-1" ></div>
       <v-text-field
         v-model="search"
