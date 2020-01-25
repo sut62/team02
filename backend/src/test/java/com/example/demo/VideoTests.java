@@ -231,56 +231,6 @@ public class VideoTests{
     }
 
     @Test
-    void b5900428_testVideoNameMustBeUnique() {
-
-        Type type = new Type();
-        type.setType("วีดีโอเพื่อการศึกษา");
-        type = typeRepository.saveAndFlush(type);
-
-        Librarian librarian = new Librarian();
-        librarian.setLibrarianName("นางสาวใจดี ดีใจ");
-        librarian = librarianRepository.saveAndFlush(librarian);
-
-        Category category = new Category();
-        category.setCategory("ภาพยนตร์ต่างประเทศ");
-        category = categoryRepository.saveAndFlush(category);
-
-        Video video = new Video();
-
-        video.setVideoName("videoName");
-        video.setVideoCode("12345");
-        video.setType(type);
-        video.setLibrarian(librarian);
-        video.setCategory(category);
-
-        video = videoRepository.saveAndFlush(video);
-
-        assertThrows(DataIntegrityViolationException.class, () -> {
-            Type type2 = new Type();
-            type2.setType("วีดีโอเพื่อการศึกษา");
-            type2 = typeRepository.saveAndFlush(type2);
-
-            Librarian librarian2 = new Librarian();
-            librarian2.setLibrarianName("นางสาวใจดี ดีใจ");
-            librarian2 = librarianRepository.saveAndFlush(librarian2);
-
-            Category category2 = new Category();
-            category2.setCategory("ภาพยนตร์ต่างประเทศ");
-            category2 = categoryRepository.saveAndFlush(category2);
-
-            Video video2 = new Video();
-
-            video2.setVideoName("videoName");
-            video2.setVideoCode("12345");
-            video2.setType(type2);
-            video2.setLibrarian(librarian2);
-            video2.setCategory(category2);
-
-            video2 = videoRepository.saveAndFlush(video2);
-        });       
-    }
-
-    @Test
     void b5900428_testVideoCodeMustBeUnique() {
 
         Type type = new Type();
