@@ -2,19 +2,25 @@ package com.example.demo.entity;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import lombok.*;
 
 @Entity
 @Data  
 @NoArgsConstructor  
-@Table
+@Table(
+   uniqueConstraints = @UniqueConstraint(columnNames = {"EMAIL"})
+)
 public class RateUsagePoint {
     
     @Id
@@ -22,24 +28,27 @@ public class RateUsagePoint {
     private Long id;
  
     @ManyToOne
-    @NonNull
+    @NotNull(message = "Status cannot be null")
     private Status status;
 
     @ManyToOne
-    @NonNull
+    @NotNull(message = "Education Level cannot be null")
     private EducationLevel edlevel;
 
-    @NonNull
+    @NotNull(message = "Date cannot be null")
     private Date date;
       
-    @NonNull 
+    @Email(message = "Email is not a valid Email")
+    @NotNull(message = "Email cannot be null")
     private String email; 
     
-    @NonNull
+    @Size(min = 10, max = 200, message 
+      = "Suggestion must be between 10 and 200 characters")
+    @NotNull(message = "Suggestion cannot be null")
     private String suggestion;
 
     @ManyToOne
-    @NonNull
+    @NotNull(message = "Rating cannot be null")
     private Rating rating;
 
 

@@ -2,7 +2,7 @@
     <v-app>
         <v-card class="mx-auto" width="50%">
                <v-toolbar color="blue darken-2" dark flat>
-                <v-toolbar-title>ระบบลงทะเบียนสมาชิก</v-toolbar-title>
+                <v-toolbar-title>ระบบให้คะแนนการใช้งาน</v-toolbar-title>
                 </v-toolbar>
             <v-container>
                 <v-form ref="form">
