@@ -42,6 +42,17 @@
                     ></v-text-field>
                   </v-col>
 
+                  <v-col cols="12">
+                    <v-text-field
+                            label="กรอกรหัสวีดีโอ"
+                            name="videoCode"
+                            type="text"
+                            v-model="video.videoCode"
+                            :rules="[(v) => !!v || 'กรุณากรอกรหัสวีดีโอ']"
+                            required
+                    ></v-text-field>
+                  </v-col>
+
                   <v-row>
                     <v-col cols="12">
                       <v-select
@@ -76,6 +87,8 @@
               </v-card-text>
               <v-card-actions>
                 <v-btn color="blue darken-2" @click="saveVideo">บันทึกข้อมูล</v-btn>
+                <v-spacer></v-spacer>
+                 <v-btn color="error" to="/viewVideo">แสดงข้อมูลวีดีโอ</v-btn>
               </v-card-actions>
 
               <v-snackbar v-model="snackbar">
@@ -102,6 +115,7 @@ export default {
       video: {
         librarianid: "",
         videoName:"",
+        videoCode:"",
         typeid: "",
         categoryid: "",
       },
@@ -160,15 +174,18 @@ export default {
     saveVideo() {
       console.log(this.video.librarianid)
       console.log(this.video.videoName)
+      console.log(this.video.videoCode)
       console.log(this.video.typeid)
       console.log(this.video.categoryid)
       http
         .post(
-          ////addVideo/{librarianid}/{videoName}/{typeid}/{categoryid}
+          ////addVideo/{librarianid}/{videoName}/{videoCode}/{typeid}/{categoryid}
             "/addVideo/" +
             this.video.librarianid +
             "/" +
             this.video.videoName +
+            "/" +
+            this.video.videoCode +
             "/" +
             this.video.typeid +
             "/" +
