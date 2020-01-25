@@ -8,7 +8,7 @@ import AddBook from './components/AddBook'
 import borrow from './components/borrow'
 import ViewDocument from './components/ViewDocument'
 import viewVideo from './components/viewVideo'
-
+import viewRateUP from './components/ViewRatingUP'
 import Remand from './components/Remand'
 
 import ShowMember from './components/ShowMember'
@@ -69,6 +69,10 @@ const router = new VueRouter({
                 {
                     path: 'viewVideo',
                     component: viewVideo
+                },
+		{
+                    path: 'viewRateUP',
+                    component: viewRateUP
                 }
 
 
