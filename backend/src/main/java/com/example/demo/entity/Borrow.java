@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -22,19 +25,28 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-@Table(name = "Borrow")
+@Table(name = "Borrow", uniqueConstraints = @UniqueConstraint(columnNames = {"TELL_ID"}))
 public class Borrow {
 
     @Id
     @GeneratedValue
     @Column(unique = true)
     private Long borrowId;
-    @NotNull(message = "number must be not null")
+
+    @NotNull(message = "number must  not be null")
+    @Min(value = 1, message = "number must not be less than 1")
+    @Max(value =  100, message = "number must not be greater than 100") 
     private Long numbers;
+
+
+
+
     @NotNull(message = "borrow date must be not null")
     private Date borrowDate;
-    @Size(max = 25, message = "description must be max 25 characters")
-    private String Descripton;
+
+    // @Size(max = 25, message = "description must be max 25 characters")
+    // private String Descripton;
+    @Column(name = "TELL_ID")
     @Pattern(regexp = "\\d{10}", message = "tell must be digit and 10 characters")
     private String tell;
 

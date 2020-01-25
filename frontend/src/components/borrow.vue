@@ -86,13 +86,24 @@
                   </v-row>
                 </v-form>
 
+                <v-col cols="12">
+                    <v-text-field
+                      label="เบอร์โทร"
+                      name="name"
+                      type="text"
+                      v-model="borrow.tell"
+                      :rules="[(v) => !!v || 'Please fill in the information']"
+                      required
+                    ></v-text-field>
+                  </v-col>
+
                 <v-snackbar v-model="snackbar">
                   {{ text }}
                   <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
                 </v-snackbar>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="error" @click="clear">Clear</v-btn>
+                <v-btn color="error" to="/showHistory">แสดงประวัติการยืม</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-2" @click="saveBorrow">Save</v-btn>
               </v-card-actions>
@@ -116,7 +127,8 @@ export default {
         booktypeId: "",
         booknameId: "",
         numbers: "",
-        memtpeId: ""
+        memtpeId: "",
+        tell: ""
       },
       snackbar: false,
       text: ""
@@ -180,17 +192,23 @@ export default {
       console.log(this.borrow);
       http
         .post(
-          //borrow/{numbers}/{member_id}/{bookType_id}/{document_id}/{memType_id}"
+          //borrow/{member_id}/{bookType_id}/{document_id}/{numbers}/{memType_id}/{tell}"
           "/borrow/" +
-            parseInt(this.borrow.numbers, 10) +
-            "/" +
+            // parseInt(this.borrow.numbers, 10) +
+            // "/" +
             this.borrow.memberId +
             "/" +
             this.borrow.booktypeId +
             "/" +
             this.borrow.booknameId +
             "/" +
-            this.borrow.memtpeId
+            this.borrow.numbers +
+            "/" +
+            this.borrow.memtpeId +
+            "/" +
+            this.borrow.tell
+            
+          
         )
         .then(response => {
           console.log(response);
@@ -204,13 +222,13 @@ export default {
         })
       this.submitted = true;
     },
-    clear() {
-      this.borrow.memberId = "";
-      this.borrow.booktypeId = "";
-      this.borrow.booknameId = "";
-      this.borrow.numbers = "";
-      this.borrow.memtpeId = "";
-    },
+    // clear() {
+    //   this.borrow.memberId = "";
+    //   this.borrow.booktypeId = "";
+    //   this.borrow.booknameId = "";
+    //   this.borrow.numbers = "";
+    //   this.borrow.memtpeId = "";
+    // },
     refreshList() {
       this.getCreatMember();
       this.getCreatBookType();

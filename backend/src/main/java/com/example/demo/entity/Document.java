@@ -30,6 +30,8 @@ import javax.validation.constraints.Min;
 @Getter // เรียกใช้ Getter เอาไว้จำกัดการเข้าถึง เพื่อ get ค่าให้กับแต่ละ attribute
 @Setter // เรียกใช้ Setter เอาไว้จำกัดการเข้าถึง เพื่อ set ค่าให้กับแต่ละ attribute
 @NoArgsConstructor //
+@AllArgsConstructor
+@Builder
 public class Document { // บอกตำแหน่งปัจจุบัน
 
     @Id // คือ annotation ที่ไว้สร้าง Primary Key

@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import lombok.NonNull;
 
 import com.example.demo.repository.BorrowRepository;
 import com.example.demo.repository.MemberRepository;
@@ -48,7 +45,7 @@ public class BorrowController {
 
     
 
-    public BorrowController(final BorrowRepository borrowRepository) {
+    public BorrowController(BorrowRepository borrowRepository) {
         this.borrowRepository = borrowRepository;
     }
 
@@ -57,13 +54,16 @@ public class BorrowController {
         return borrowRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("/borrow/{numbers}/{member_id}/{bookType_id}/{document_id}/{memType_id}") //can't save bcz on script on vue page is addmember
+    @PostMapping("/borrow/{member_id}/{bookType_id}/{document_id}/{numbers}/{memType_id}/{tell}") //can't save bcz on script on vue page is addmember
     public Borrow newBorrow(Borrow newBorrow,
-                            @PathVariable  long numbers, 
+                            
                             @PathVariable  long member_id,
                             @PathVariable  long bookType_id,
                             @PathVariable  long document_id,
-                            @PathVariable  long memType_id
+                            @PathVariable  long numbers, 
+                            @PathVariable  long memType_id,
+                            @PathVariable  String tell
+
                             ) {
             Member member = memberRepository.findById(member_id);
             BookType booktype = booktypeRepository.findById(bookType_id);                 
@@ -75,7 +75,9 @@ public class BorrowController {
             newBorrow.setDocument(document);
 			newBorrow.setNumbers(numbers);
             newBorrow.setMemtype(memtype);
+            newBorrow.setTell(tell);
             newBorrow.setBorrowDate(new Date());
+            
     
         return borrowRepository.save(newBorrow);
 

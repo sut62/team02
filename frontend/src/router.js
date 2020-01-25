@@ -13,6 +13,8 @@ import Remand from './components/Remand'
 
 import ShowMember from './components/ShowMember'
 import home from './components/home'
+import home from './components/showHistory'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -68,12 +70,16 @@ const router = new VueRouter({
                 },
                 {
                     path: 'viewVideo',
-                    component: viewVideo
+                    component: viewVideo               
                 },
 		{
                     path: 'viewRateUP',
-                    component: viewRateUP
-                }
+                    component: viewRateUP                      
+                },
+                {
+                            path: 'showHistory',
+                            component: showHistory                     
+                        }
 
 
 
