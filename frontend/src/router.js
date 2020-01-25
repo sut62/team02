@@ -6,6 +6,7 @@ import Member from './components/Member'
 import addVideo from './components/addVideo'
 import AddBook from './components/AddBook'
 import borrow from './components/borrow'
+import ViewDocument from './components/ViewDocument'
 
 import Remand from './components/Remand'
 
@@ -59,7 +60,12 @@ const router = new VueRouter({
                 {
                     path: 'home',
                     component: home,
+                },
+                {
+                    path: 'viewdocument',
+                    component: ViewDocument
                 }
+
 
 
             ]
