@@ -3,26 +3,17 @@
     <center>
       <v-form v-model="valid" ref="form"> 
           <v-card class="mx-auto" max-width="100%">
-                 <v-row>
-                    <v-col>
-                      
-                   
-                     <v-card color="basil">
-                    <v-card-title class="text-center justify-center py-6">
-                   <h1 class="font-weight display-1 basil--text">ระบบลงทะเบียนสมาชิก</h1>
-                   </v-card-title>
-                   </v-card>  
-                    
 
-                    </v-col>
-                  </v-row>
-               
-
+         
+                <v-toolbar color="blue darken-2" dark flat>
+                <v-toolbar-title>ระบบลงทะเบียนสมาชิก</v-toolbar-title>
+                </v-toolbar>
+            
 <v-card-text>
                     <v-row>
                          <v-col cols="12">
                         <v-select
-                            label="โปรดเลือกคำนำหน้า"
+                            label="เลือกคำนำหน้า"
                             outlined
 
                             v-model="Member.prefixid"
@@ -47,6 +38,7 @@
 
                                 required
                                 v-model="Member.name"
+                                 :rules="[(v) => !!v || 'กรุณากรอกชื่อ-นามสกุล']"
                             ></v-text-field>
                             </v-col>
                     </v-row>
@@ -60,6 +52,7 @@
 
                                 required
                                 v-model="Member.idcard"
+                                 :rules="[(v) => !!v || 'กรุณากรอกเลขประจำตัวบัตรประชาชน 13 หลัก']"
                             ></v-text-field>
                             </v-col>
                     </v-row>
@@ -67,7 +60,7 @@
                     <v-row>
                         <v-col>
                         <v-select
-                            label="โปรดเลือกจังหวัด"
+                            label="เลือกจังหวัด"
                             outlined
 
                             v-model="Member.provinceid"
@@ -85,7 +78,7 @@
                    <v-row>
                         <v-col>
                         <v-select
-                            label="โปรดเลือกประเภทสมาชิก"
+                            label="เลือกประเภทสมาชิก"
                             outlined
 
                             v-model="Member.memtypeid"
@@ -103,15 +96,27 @@
                  
 </v-card-text>
 
-                    <v-row justify="center">
-                        <v-col cols="12">
-                            <v-btn @click="saveMember" :class="{ yellow: !valid, green: valid }" color="primary">บันทึกข้อมูล</v-btn>&nbsp;&nbsp;&nbsp;
-                            
-                            
-                        </v-col>
-                        </v-row>
-                    </v-card>    
+                
+                <v-card-actions>
+                  
+                  <v-btn color="primary" @click="saveMember">บันทึกข้อมูล</v-btn>
+                       
+                        <v-spacer></v-spacer>
+
+                 <v-btn color="error" to="/ShowMember">แสดงรายชื่อผู้ลงทะเบียนสมาชิก</v-btn>
+                    
+              </v-card-actions>
+                  
+                  
+                  
+                    </v-card> 
+
+                     
       </v-form>
+      <v-snackbar v-model="snackbar">
+                  {{ message }}
+                <v-btn text color="red" @click="snackbar = !snackbar">ปิด</v-btn>
+              </v-snackbar>
    </center>
     
 </template>
@@ -127,21 +132,23 @@
         name: "Member",
          data() {
     return {
+      snackbar: false,
       Member:{
         prefixid: "",
         name: "",
         idcard: "",
         provinceid: "",
         memtypeid: "",
-        
-        active: false
-        },
-        submitted: false,
-        valid: false,
+      },
+       snaktr: false,
+        text: ""
     };
   },
 methods: {
    /* eslint-disable */
+    reset: function () {
+            this.$refs.form.reset();
+        },
     getPrefix(){
       http
         .get("/prefix")
@@ -199,23 +206,25 @@ methods: {
             this.Member.memtypeid,
           this.Member
         )
-    .then(response => {
-          console.log(response);
-          if(response = true){
-            alert('บันทึกข้อมูลเสร็จสิ้น')
-          } 
-          this.$refs.form.reset();
-       //   this.customerCheck = false;
+     .then(response => {
+          console.log(response); 
+          this.message = "เพิ่มข้อมูลสำเร็จ";
         })
         .catch(e => {
           console.log(e);
-           if(e = false){
-            alert('การบันทึกข้อมูลผิดพลาด')
-          }
-        });
-      
+          this.message = "เพิ่มข้อมูลไม่สำเร็จ"
+        })
+       .finally(() => {
+                    this.snackbar = !this.snackbar;
+                    this.reset();
+          });
      
     },
+     refreshList() {
+      this.getPrefix();
+      this.getProvince();
+      this.getMemtype();
+    }
    
   },
     mounted() {
@@ -241,7 +250,7 @@ methods: {
     }
     
   .v-btn{
-      background-color:rgba(250, 250, 250)
+      background-color:rgb(250, 250, 250)
   }
 
 .basil {
