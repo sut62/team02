@@ -94,7 +94,7 @@ public class DemoApplication {
         });
 
 
-		Stream.of("สมบูรณ์ 100 %" , "ฉีกขาดบางหน้า" , "ฉีกขาดหลายหน้า" , "ชำรุดหนัก" , "สูญหาย")
+		Stream.of("สมบูรณ์ 100 เปอร์เซ็น" , "ฉีกขาดบางหน้า" , "ฉีกขาดหลายหน้า" , "ชำรุดหนัก" , "สูญหาย")
 			.forEach(bookStatusName -> {
 			BookStatus bookStatus = new BookStatus();
 			bookStatus.setBookStatusName(bookStatusName);
