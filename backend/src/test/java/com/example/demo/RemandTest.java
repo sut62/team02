@@ -35,7 +35,7 @@ public class RemandTest {
     }
 
     @Test
-    void testCreateRemandOK() {
+    void B5902200_testCreateRemandOK() {
         Remand remand = new Remand();
         Date nowDate = new Date();
         remand.setRemanddate(nowDate);
@@ -48,7 +48,7 @@ public class RemandTest {
     }
 
 	@Test
-    void testRemandIdMustNotBeNull() {
+    void B5902200_testRemandIdMustNotBeNull() {
         Remand remand = new Remand();
         Date nowDate = new Date();
         remand.setAmount(1);
@@ -65,7 +65,7 @@ public class RemandTest {
     }
     
     @Test
-    void testRemanddateMustNotBeNull() {
+    void B5902200_testRemanddateMustNotBeNull() {
         Remand remand = new Remand();
         remand.setRemanddate(null);
         remand.setId(1L);
@@ -81,7 +81,7 @@ public class RemandTest {
     }
 
     @Test
-    void testAmountMustNotLessThan1() {
+    void B5902200_testAmountMustNotLessThan1() {
         Remand remand = new Remand();
         Date date = new Date();
         remand.setRemanddate(date);
@@ -98,7 +98,7 @@ public class RemandTest {
     }
 
     @Test
-    void testAmountMustNotLessThan10() {
+    void B5902200_testAmountMustNotLessThan10() {
         Remand remand = new Remand();
         Date date = new Date();
         remand.setRemanddate(date);

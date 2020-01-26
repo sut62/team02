@@ -36,7 +36,7 @@ public class BookStatusTest {
     }
 
     @Test
-    void testCreateBookStatusOK() {
+    void B5902200_testCreateBookStatusOK() {
         BookStatus bookStatus = new BookStatus();
         bookStatus.setBookStatusName("Booking");
 		bookStatus = BookStatusRepository.saveAndFlush(bookStatus);
@@ -47,7 +47,7 @@ public class BookStatusTest {
     }
 
 	@Test
-    void testBookStatusIdMustNotBeNull() {
+    void B5902200_testBookStatusIdMustNotBeNull() {
         BookStatus bookStatus = new BookStatus();
         bookStatus.setBookStatusName("Booking");
         bookStatus.setId(null);
@@ -62,7 +62,7 @@ public class BookStatusTest {
     }
     
     @Test
-    void testBookStatusNameMustNotBeNull() {
+    void B5902200_testBookStatusNameMustNotBeNull() {
         BookStatus bookStatus = new BookStatus();
         bookStatus.setBookStatusName(null);
         bookStatus.setId(1L);
@@ -77,7 +77,7 @@ public class BookStatusTest {
     }
 
     @Test
-    void testBookStatusNameMustNotEnterSpecialCharactor() {
+    void B5902200_testBookStatusNameMustNotEnterSpecialCharactor() {
         BookStatus bookStatus = new BookStatus();
         bookStatus.setBookStatusName("Booking@@");
         bookStatus.setId(1L);
@@ -92,7 +92,7 @@ public class BookStatusTest {
     }
 
     @Test
-    void testBookStatusNameMustNotLessThan3() {
+    void B5902200_testBookStatusNameMustNotLessThan3() {
         BookStatus bookStatus = new BookStatus();
         bookStatus.setBookStatusName("BB");
         bookStatus.setId(1L);
@@ -107,7 +107,7 @@ public class BookStatusTest {
     }
 
     @Test
-    void testBookStatusNameMustNotMoreThan30() {
+    void B5902200_testBookStatusNameMustNotMoreThan30() {
         BookStatus bookStatus = new BookStatus();
         bookStatus.setBookStatusName("Book status name must not more than 30");
         bookStatus.setId(1L);
