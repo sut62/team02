@@ -10,7 +10,7 @@ import ViewDocument from './components/ViewDocument'
 import viewVideo from './components/viewVideo'
 import viewRateUP from './components/ViewRatingUP'
 import Remand from './components/Remand'
-
+import RemandData from './components/RemandData'
 import ShowMember from './components/ShowMember'
 import home from './components/home'
 import showHistory from './components/showHistory'
@@ -78,7 +78,12 @@ const router = new VueRouter({
                 {
                             path: 'showHistory',
                             component: showHistory                     
+                        },
+                        {
+                            path: 'RemandData',
+                            component: RemandData,
                         }
+        
 
 
 
