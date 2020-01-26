@@ -11,7 +11,7 @@
         <v-responsive>
           <v-flex>
             <v-card class="mx-auto" max-width="80%">
-              <v-toolbar color="blue darken-2" dark flat>
+              <v-toolbar color="pink " dark flat>
                 <v-toolbar-title>ระบบจัดเก็บรายชื่อหนังสือ</v-toolbar-title>
               </v-toolbar>
 
@@ -97,7 +97,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="error">Clear</v-btn>
+               
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-2" @click="addDocument">บันทึกข้อมูล</v-btn>
               </v-card-actions>
