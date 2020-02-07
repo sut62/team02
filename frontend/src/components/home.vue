@@ -22,10 +22,8 @@
         <v-btn text to="/addVideo">เพิ่มวิดีโอ</v-btn> <v-divider inset vertical></v-divider>
         <v-btn text to="/borrow">ยืมหนังสือ</v-btn> <v-divider inset vertical></v-divider>
         <v-btn text to="/remand">คืนหนังสือ</v-btn> <v-divider inset vertical></v-divider>
-        <v-btn text to="/viewRateUP">แสดงการให้คะแนน</v-btn> <v-divider inset vertical></v-divider>
-        <v-btn text to="/viewdocument">รายการหนังสือ</v-btn> <v-divider inset vertical></v-divider>
-        <v-btn text to="/RemandData">ประวัติการคืนหนังสือ</v-btn><v-divider inset vertical></v-divider>
-
+        <v-btn text to="/rates">ให้คะแนน</v-btn> <v-divider inset vertical></v-divider>
+       
 
       </v-toolbar-items>
     </v-app-bar>
