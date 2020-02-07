@@ -51,7 +51,7 @@ public class MemberController {
 
     }
 
-        @PostMapping("/member/{prefixid}/{name}/{idcard}/{provinceid}/{memtypeid}") //can't save bcz on script on vue page is addmember
+        @PostMapping("/member/{prefixid}/{name}/{idcard}/{provinceid}/{memtypeid}/{librarian}") /////////////
         public Member newMember(Member newMember,
                                   @PathVariable long prefixid,
                                   @PathVariable String name,
@@ -68,7 +68,7 @@ public class MemberController {
             newMember.setIdcard(idcard);
             newMember.setProvince(province);
             newMember.setMemtype(memtype);
-        
+           
             return memberRepository.save(newMember);
 
         

@@ -1,17 +1,11 @@
 <template>
-
-    <center> <v-navigation-drawer
-     
-     
-      src="https://scontent.fbkk12-3.fna.fbcdn.net/v/t1.15752-9/83149502_2972070209470311_7682216390979223552_n.png?_nc_cat=102&_nc_oc=AQn4LgMsKisZbkkghs5GtLM8F8xwOKG0msr91guVADUANdorhkXRG96Sa5jCJLQMpvE&_nc_ht=scontent.fbkk12-3.fna&oh=361fa5fd23d568656481120b7818b191&oe=5E99086F"
-      width="500%"
-      height="700"
-    
-    > 
+ <v-app id="page">
+    <center> 
+      <br /> <br /> 
       <v-form v-model="valid" ref="form"> 
       
           <v-card class="mx-auto" max-width="100%">
-
+  
          
                 <v-toolbar color="pink" dark flat>
                 <v-toolbar-title>ระบบลงทะเบียนสมาชิก</v-toolbar-title>
@@ -121,13 +115,13 @@
 
                  
       </v-form>
-       </v-navigation-drawer>     
+      
       <v-snackbar v-model="snackbar">
                   {{ message }}
                 <v-btn text color="red" @click="snackbar = !snackbar">ปิด</v-btn>
               </v-snackbar>
    </center>
-
+ </v-app>   
 
   
 </template>
@@ -250,14 +244,11 @@ methods: {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  scoped,lang="scss" scoped>
-    .v-app-bar{
-    margin-top: 1px;
-    background-color:rgb(75, 73, 238)  
-  }
-
+   
   .v-form {
       width: 55%;
-      background-color:rgb(250, 250, 250)
+      
+    
     }
     
   .v-btn{
@@ -270,5 +261,14 @@ methods: {
 .basil--text {
   color: #edf5f2 !important;
 }
+
+#page {
+  background-image: url("https://scontent.fbkk12-3.fna.fbcdn.net/v/t1.15752-9/83149502_2972070209470311_7682216390979223552_n.png?_nc_cat=102&_nc_oc=AQn4LgMsKisZbkkghs5GtLM8F8xwOKG0msr91guVADUANdorhkXRG96Sa5jCJLQMpvE&_nc_ht=scontent.fbkk12-3.fna&oh=361fa5fd23d568656481120b7818b191&oe=5E99086F");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 </style>
 

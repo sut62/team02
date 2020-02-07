@@ -1,15 +1,49 @@
-<template>  <v-navigation-drawer
-     
-     
-      src="https://dcassetcdn.com/design_img/2495449/83570/83570_13222851_2495449_a5ee7223_image.png"
-      width="500%"
-      height="700"
-    
-    >
+<template>  
+
+  <v-app id="page">
+
+
+    <v-app-bar app color="pink" dark >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      
+      <v-toolbar-title>ระบบห้องสมุด</v-toolbar-title>
+        <v-toolbar-items>
+         <v-divider inset vertical></v-divider>
+         
+      </v-toolbar-items>
+
+        <div class="flex-grow-1"></div>
+
+      <v-toolbar-items>
+        <v-btn text to="/home">Home</v-btn> <v-divider inset vertical></v-divider>
+         <v-divider inset vertical></v-divider>
+         <v-btn text to="/Member">ลงทะเบียนสมาชิก</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/AddBook">เพิ่มหนังสือ</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/addVideo">เพิ่มวิดีโอ</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/borrow">ยืมหนังสือ</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/remand">คืนหนังสือ</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/rates">ให้คะแนน</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/viewdocument">รายการหนังสือ</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/RemandData">ประวัติการคืนหนังสือ</v-btn><v-divider inset vertical></v-divider>
+
+
+      </v-toolbar-items>
+    </v-app-bar>
+
+
 
   
-  </v-navigation-drawer>
+
+  </v-app>  
 </template>
 
+<style>
+#page {
+  background-image: url("https://dcassetcdn.com/design_img/2495449/83570/83570_13222851_2495449_a5ee7223_image.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
 
 
