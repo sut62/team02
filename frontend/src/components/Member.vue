@@ -94,21 +94,37 @@
                         </v-col>
                     </v-row>   
                     
+                   
                     
                  
 </v-card-text>
 
                 
-                <v-card-actions>
-                  
-                  <v-btn color="pink" dark flat @click="saveMember">บันทึกข้อมูล</v-btn>
+       
+
+
+
+
+
+
+
+                 <v-card-actions>
+
+                 
+                  <v-btn color="blue-grey darken-3" dark flat to="/home">กลับสู่หน้าหลัก</v-btn>   
+                 <v-btn color="brown darken-2" dark flat to="/ShowMember">แสดงรายชื่อผู้ลงทะเบียนสมาชิก</v-btn>
                        
                         <v-spacer></v-spacer>
 
-                 <v-btn color="pink" dark flat to="/ShowMember">แสดงรายชื่อผู้ลงทะเบียนสมาชิก</v-btn>
-                    
+                 
+                  <v-btn color="red darken-4" dark flat @click="saveMember">บันทึกข้อมูล</v-btn>      
+                  
               </v-card-actions>
                   
+
+
+
+
                   
                   
                     </v-card> 

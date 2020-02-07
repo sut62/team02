@@ -1,4 +1,5 @@
 <template>
+ <v-app id="page">
   <v-container>
     <!-- <v-app-bar app color="blue darken-2" dark>
        <v-app-bar-nav-icon></v-app-bar-nav-icon> @click.stop="drawer = !drawer" 
@@ -96,11 +97,17 @@
                   </v-row>
                 </v-form>
               </v-card-text>
-              <v-card-actions>
-               
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-2" @click="addDocument">บันทึกข้อมูล</v-btn>
+
+
+
+
+               <v-card-actions>                 
+                 <v-btn color="blue-grey darken-3" dark flat to="/home">กลับสู่หน้าหลัก</v-btn>   
+                 <v-btn color="teal darken-4" dark flat to="/viewdocument">แสดงรายชื่อหนังสือ</v-btn>                       
+                        <v-spacer></v-spacer>                
+                  <v-btn color="red darken-4" dark flat @click="addDocument">บันทึกข้อมูล</v-btn>                      
               </v-card-actions>
+
 
               <v-snackbar v-model="snackbar">
                  {{ message}}
@@ -114,6 +121,7 @@
       </div>
     </v-container>
   </v-container>
+   </v-app>
 </template>
 
 <script>
@@ -251,3 +259,16 @@ export default {
         }
     };
 </script>
+
+<style  scoped,lang="scss" scoped>
+   
+#page {
+  background-image: url("https://scontent.fbkk8-3.fna.fbcdn.net/v/t1.15752-9/s2048x2048/85111636_650712959008558_5153470712316428288_n.jpg?_nc_cat=111&_nc_oc=AQlqwJ-Lba_sIjxxThN8dbQg_IbX0_r1IUx6W9jd6dEAO_uFDLXpU49Ks46rRMHcYDQ&_nc_ht=scontent.fbkk8-3.fna&oh=ed77fb7f68f9a30a7276eebe68d7ea80&oe=5EDA3D53");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+</style>
+
