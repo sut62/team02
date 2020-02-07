@@ -83,9 +83,10 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
+                <v-btn color="red lighten-2" to="/Home">กลับสู่หน้าหลัก</v-btn>
+                <v-btn color="blue lighten-3" to="/viewVideo">แสดงข้อมูลวีดีโอ</v-btn>
+                 <v-spacer></v-spacer>
                 <v-btn color="purple lighten-4" @click="saveVideo">บันทึกข้อมูล</v-btn>
-                <v-spacer></v-spacer>
-                 <v-btn color="blue lighten-3" to="/viewVideo">แสดงข้อมูลวีดีโอ</v-btn>
               </v-card-actions>
 
               <v-snackbar v-model="snackbar">
