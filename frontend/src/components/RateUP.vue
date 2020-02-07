@@ -40,6 +40,7 @@
                         <v-container>
                             <v-btn color="success" dark @click="sentRateUP">ส่ง</v-btn>
                             <v-btn color="error" class="mr-4" @click="reset">ล้างฟอร์ม</v-btn>
+                            <v-btn text to="/login">กลับสู่หน้า Login</v-btn> <v-divider inset vertical></v-divider>
                         </v-container>
                      </v-card-actions>
                 </v-form>
