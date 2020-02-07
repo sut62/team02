@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import java.util.Date;
-import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +24,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-@Table(name = "Borrow", uniqueConstraints = @UniqueConstraint(columnNames = {"TELL_ID"}))
+@Table(name = "Borrow")
 public class Borrow {
 
     @Id
