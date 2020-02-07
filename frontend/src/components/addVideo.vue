@@ -196,7 +196,7 @@ export default {
         })
         .catch(e => {
           console.log(e);
-          this.message = "เพิ่มข้อมูลไม่สำเร็จ"
+          this.message = "ไม่สามารถเพิ่มข้อมูลได้"
         })
         .finally(() => {
                     this.snackbar = !this.snackbar;
