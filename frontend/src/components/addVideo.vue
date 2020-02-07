@@ -1,15 +1,12 @@
 <template>
   <v-container>
-    <!-- <v-app-bar app color="blue darken-2" dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>ระบบจัดเก็บวีดีโอ</v-toolbar-title>
-    </v-app-bar> -->
+
      <v-container>
       <div>
         <v-responsive>
           <v-flex>
             <v-card class="mx-auto" max-width="80%">
-              <v-toolbar color="blue darken-2" dark flat>
+              <v-toolbar color="pink lighten-2" dark flat>
                 <v-toolbar-title>ระบบจัดเก็บวีดีโอ</v-toolbar-title>
 
               </v-toolbar>
@@ -86,9 +83,9 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="blue darken-2" @click="saveVideo">บันทึกข้อมูล</v-btn>
+                <v-btn color="purple lighten-4" @click="saveVideo">บันทึกข้อมูล</v-btn>
                 <v-spacer></v-spacer>
-                 <v-btn color="error" to="/viewVideo">แสดงข้อมูลวีดีโอ</v-btn>
+                 <v-btn color="blue lighten-3" to="/viewVideo">แสดงข้อมูลวีดีโอ</v-btn>
               </v-card-actions>
 
               <v-snackbar v-model="snackbar">
