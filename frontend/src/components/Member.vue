@@ -111,13 +111,13 @@
                  <v-card-actions>
 
                  
-                  <v-btn color="blue-grey darken-3" dark flat to="/home">กลับสู่หน้าหลัก</v-btn>   
-                 <v-btn color="brown darken-2" dark flat to="/ShowMember">แสดงรายชื่อผู้ลงทะเบียนสมาชิก</v-btn>
+                  <v-btn color="blue-grey darken-3" dark flat to="/home"><v-icon dark left>mdi-arrow-left</v-icon>กลับสู่หน้าหลัก</v-btn>   
+                 <v-btn color="brown darken-2" dark flat to="/ShowMember"><v-icon>mdi-history</v-icon>แสดงรายชื่อผู้ลงทะเบียนสมาชิก</v-btn>
                        
                         <v-spacer></v-spacer>
 
                  
-                  <v-btn color="red darken-4" dark flat @click="saveMember">บันทึกข้อมูล</v-btn>      
+                  <v-btn color="red darken-4" dark flat @click="saveMember">บันทึกข้อมูล<v-icon dark right>mdi-checkbox-marked-circle</v-icon></v-btn>      
                   
               </v-card-actions>
                   

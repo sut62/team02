@@ -26,6 +26,19 @@
       <v-col cols="8">
         <v-data-table :headers="headers" :items="items" :items-per-page="5" class="elevation-1">
         </v-data-table>
+         <br /> <br /> 
+        <v-card-actions>
+
+                 
+                  <v-btn color="blue-grey darken-3" dark flat to="/borrow"><v-icon dark left>mdi-arrow-left</v-icon>กลับสู่หน้ายืมหนังสือ</v-btn>   
+                 
+                       
+                        <v-spacer></v-spacer>
+
+                 <v-btn color="pink" dark flat to="/home"><v-icon>mdi-home</v-icon>กลับสู่หน้าหลัก</v-btn>
+                 
+                  
+              </v-card-actions>
       </v-col>
     </v-row>
 
