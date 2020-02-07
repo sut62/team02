@@ -41,6 +41,9 @@ public class Member {
 
   private Long memberid;
 
+  private String librarian;/////////////////////////////
+  
+
 
   @Pattern(regexp = "[ก-์|A-z|\\s].+")
  // @Column(name = "Name_ID")
