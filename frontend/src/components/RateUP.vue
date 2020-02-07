@@ -1,5 +1,8 @@
 <template>
-    <v-app>
+    <v-app :style="{ backgroundImage: 'url(' + pic1 + ')' }">
+        <br>
+        <br>
+        <br>
         <v-card class="mx-auto" width="50%">
                <v-toolbar color="blue darken-2" dark flat>
                 <v-toolbar-title>ระบบให้คะแนนการใช้งาน</v-toolbar-title>
@@ -58,6 +61,7 @@
 import RateUPController from "../controller/RateUPController";
 export default {
     data: () =>({
+        pic1: "https://www.itl.cat/pngfile/big/3-37264_beautiful-pastel-wallpaper-for-xiaomi-pastel-wallpaper-full.jpg",
         snackbar: false,
         rateup:{
             email: null,

@@ -1,5 +1,8 @@
 <template>
-<v-app>
+<v-app :style="{ backgroundImage: 'url(' + pic1 + ')' }">
+  <br>
+  <br>
+  <br>
   <v-card class="mx-auto" width="50%">
   <v-container>   
             <v-card-title>ระบบแสดงและค้นหาการให้คะแนนการให้งาน
@@ -31,6 +34,7 @@
 import RateUP from "../controller/RateUPController";
 export default {
    data: () => ({
+       pic1: "http://getwallpapers.com/wallpaper/full/e/9/e/1012715-pastel-wallpaper-1920x1080-for-windows.jpg",
        search: '',
        RateUPX:[],
        headers: [
