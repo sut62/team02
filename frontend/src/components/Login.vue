@@ -18,7 +18,7 @@
             height="550"
             :elevation="25 - 1"
           >
-            <v-toolbar color="cyan lighten-2" dark flat height="150">
+            <v-toolbar color="pink lighten-1" dark flat height="150">
               <v-toolbar-title class="font-weight-black display-1">WELCOME</v-toolbar-title>
               <v-spacer />
             
@@ -57,7 +57,7 @@
             <v-card-actions>
               <v-spacer />
               <v-btn color="blue darken-2" text tile to="/rates">ให้คะแนนการใช้งาน</v-btn>
-              <v-btn @click="Login" x-large color="orange darken-2" :elevation="3 - 1">Login</v-btn>
+              <v-btn @click="Login" x-large color="red darken-3" :elevation="3 - 1">Login</v-btn>
             </v-card-actions>
 
           </v-card>
