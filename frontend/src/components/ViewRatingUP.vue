@@ -11,6 +11,7 @@
         hide-details
       ></v-text-field>
             </v-card-title>
+            <v-btn text to="/home">กลับสู่หน้าหลัก</v-btn> 
                 <v-card-text>
                     <v-data-table
                     :headers="headers"

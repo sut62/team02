@@ -38,7 +38,6 @@ const router = new VueRouter({
                     component: RateUP,
                 },
 
-                
                 {
                     path: 'Member',
                     component: Member,

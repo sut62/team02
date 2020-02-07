@@ -56,8 +56,10 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
+              <v-btn color="blue darken-2" text tile to="/rates">ให้คะแนนการใช้งาน</v-btn>
               <v-btn @click="Login" x-large color="orange darken-2" :elevation="3 - 1">Login</v-btn>
             </v-card-actions>
+
           </v-card>
         </v-card>
       </v-col>
