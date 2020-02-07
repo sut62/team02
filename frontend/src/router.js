@@ -14,8 +14,8 @@ import RemandData from './components/RemandData'
 import ShowMember from './components/ShowMember'
 import home from './components/home'
 import showHistory from './components/showHistory'
-
 import Login from './components/Login'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -27,7 +27,7 @@ const router = new VueRouter({
             children:[
                 {
                     path: '',
-                    redirect: 'home'
+                    redirect: 'Login'
                 },
                 {
                     path:'remand',
