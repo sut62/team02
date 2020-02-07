@@ -263,7 +263,7 @@ methods: {
 }
 
 #page {
-  background-image: url("https://scontent.fbkk12-3.fna.fbcdn.net/v/t1.15752-9/83149502_2972070209470311_7682216390979223552_n.png?_nc_cat=102&_nc_oc=AQn4LgMsKisZbkkghs5GtLM8F8xwOKG0msr91guVADUANdorhkXRG96Sa5jCJLQMpvE&_nc_ht=scontent.fbkk12-3.fna&oh=361fa5fd23d568656481120b7818b191&oe=5E99086F");
+  background-image: url("https://scontent.fbkk8-3.fna.fbcdn.net/v/t1.15752-9/s2048x2048/85111636_650712959008558_5153470712316428288_n.jpg?_nc_cat=111&_nc_oc=AQlqwJ-Lba_sIjxxThN8dbQg_IbX0_r1IUx6W9jd6dEAO_uFDLXpU49Ks46rRMHcYDQ&_nc_ht=scontent.fbkk8-3.fna&oh=ed77fb7f68f9a30a7276eebe68d7ea80&oe=5EDA3D53");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

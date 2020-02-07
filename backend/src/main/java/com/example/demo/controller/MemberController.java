@@ -51,7 +51,7 @@ public class MemberController {
 
     }
 
-        @PostMapping("/member/{prefixid}/{name}/{idcard}/{provinceid}/{memtypeid}/{librarian}") /////////////
+        @PostMapping("/member/{prefixid}/{name}/{idcard}/{provinceid}/{memtypeid}") /////////////
         public Member newMember(Member newMember,
                                   @PathVariable long prefixid,
                                   @PathVariable String name,
