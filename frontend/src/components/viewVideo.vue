@@ -1,5 +1,8 @@
 <template>
-<v-app>
+<v-app :style="{ backgroundImage: 'url(' + pic1 + ')' }">
+  <br>
+  <br>
+  <br>
   <v-card>
   <v-container>   
             <v-card-title>ข้อมูลวีดีโอ
@@ -20,7 +23,8 @@
                     
                     class="elevation-1"
                     ></v-data-table>
-                </v-card-text>   
+                </v-card-text>  
+                <v-btn color="red lighten-2" to="/Home">กลับสู่หน้าหลัก</v-btn> 
   </v-container>
   </v-card>
 </v-app>
@@ -34,6 +38,7 @@ export default {
   items: [],
   data() {
     return {
+      pic1: "https://www.itl.cat/pics/b/32/323348_pastel-pink-wallpaper.png",
         search: "",
       headers: [
         {text: "รหัสวีดีโอ", value: "videoCode" } ,

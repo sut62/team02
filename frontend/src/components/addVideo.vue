@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <v-app :style="{ backgroundImage: 'url(' + pic1 + ')' }">
+  <v-container >
 
      <v-container>
       <div>
@@ -100,6 +101,7 @@
       </div>
     </v-container>
   </v-container>
+  </v-app>
 </template>
 
 <script>
@@ -107,8 +109,10 @@ import http from "../http-common";
 // eslint-disable-next-line no-unused-vars
 export default {
   name: "video",
+  
   data() {
     return {
+      pic1: "https://www.itl.cat/pics/b/32/323348_pastel-pink-wallpaper.png",
       snackbar: false,
       video: {
         librarianid: "",
