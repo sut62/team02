@@ -2,9 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.beans.factory.annotation.Autowired; //import annotation เฉพาะ Autowired
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +22,6 @@ import java.util.Date;
 class RemandController {
     @Autowired
     private RemandRepository remandRepository;
-    @Autowired
-    private MemberRepository memberRepository;
     @Autowired // สร้างผู้ช่วย ที่คอยสั่ง Repo ให้ทำงานอัตโนมัติ
     private BookTypeRepository booktypeRepository; // สร้าง Obj ชื่อ typeRepo.. ชนิด TypeRepo.. เพื่อใช้งาน Entity Type
     @Autowired
@@ -36,10 +32,11 @@ class RemandController {
     private BookStatusRepository bookStatusRepository;
 
     RemandController(RemandRepository remandRepository, BookTypeRepository booktypeRepository,
-            BorrowRepository borrowRepository, BookStatusRepository bookStatusRepository) {
+            BorrowRepository borrowRepository, DocumentRepository documentRepository , BookStatusRepository bookStatusRepository) {
         this.remandRepository = remandRepository;
         this.booktypeRepository = booktypeRepository;
         this.borrowRepository = borrowRepository;
+        this.documentRepository = documentRepository;
         this.bookStatusRepository = bookStatusRepository;
     }
 
@@ -51,23 +48,24 @@ class RemandController {
                                                                                  // โดยส่งทั้งหมดออกไปเป็น list
     }
 
-    // @PostMapping("/document/{borrowID}/{memberID}/{examresultName}/{typeID}")
-    // //เพิ่มข้อมูลเหล่านี้มาตาม path นี้
-    // @PostMapping("/remand/{memberID}/{typeID}/{borrowID}/{statusName}")
-    @PostMapping("/remand/{booktypeID}/{borrowID}/{statusID}/{amount}")
+   
+    @PostMapping("/remand/{borrowID}/{booktypeID}/{documentID}/{bookstatusID}/{amount}")
     public Remand newRemand(Remand newRemand, @PathVariable long booktypeID, @PathVariable long borrowID,
-            @PathVariable Long statusID, @PathVariable Integer amount) {
+            @PathVariable long documentID, @PathVariable Long bookstatusID, @PathVariable Integer amount) {
         // System.out.println(">>>>>>>>>>>>>>>>>" + examresultName);
 
         BookType booktype = booktypeRepository.findById(booktypeID); // เอา obj typeID ไป findById
         Borrow borrow = borrowRepository.findById(borrowID);
-        BookStatus bookStatus = bookStatusRepository.findById(statusID).get();
+        Document document = documentRepository.findById(documentID);
+        BookStatus bookstatus = bookStatusRepository.findById(bookstatusID).get();
+
         newRemand.setAmount(amount);
         newRemand.setMember(borrow.getMember());
         newRemand.setBookType(booktype);
         newRemand.setBorrow(borrow);
+        newRemand.setDocument(document);
         newRemand.setRemanddate(new Date());
-        newRemand.setStatusName(bookStatus);
+        newRemand.setBookstatus(bookstatus);
 
         return remandRepository.save(newRemand);
         // เอา obj newRemand ไป save ลง Database หลักจากวิ่งผ่าน Path มา โดย save ด้วย
