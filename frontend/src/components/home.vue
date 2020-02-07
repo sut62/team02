@@ -18,8 +18,8 @@
         <v-btn text to="/home">Home</v-btn> <v-divider inset vertical></v-divider>
          <v-divider inset vertical></v-divider>
          <v-btn text to="/Member">ลงทะเบียนสมาชิก</v-btn> <v-divider inset vertical></v-divider>
-        <v-btn text to="/AddBook">เพิ่มหนังสือ</v-btn> <v-divider inset vertical></v-divider>
-        <v-btn text to="/addVideo">เพิ่มวิดีโอ</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/AddBook">จัดเก็บรายชื่อหนังสือ</v-btn> <v-divider inset vertical></v-divider>
+        <v-btn text to="/addVideo">จัดเก็บวีดีโอ</v-btn> <v-divider inset vertical></v-divider>
         <v-btn text to="/borrow">ยืมหนังสือ</v-btn> <v-divider inset vertical></v-divider>
         <v-btn text to="/remand">คืนหนังสือ</v-btn> <v-divider inset vertical></v-divider>
         <v-btn text to="/viewRateUP">แสดงการให้คะแนนการใช้งาน</v-btn> <v-divider inset vertical></v-divider>
