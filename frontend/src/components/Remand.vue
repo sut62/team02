@@ -65,7 +65,7 @@
                     <v-select
                       label="สภาพหนังสือ"
                       outlined
-                      v-model="statusId"
+                      v-model="bookstatusId"
                       :items="bookStatus"
                       item-text="bookStatusName"
                       item-value="id"
@@ -73,7 +73,7 @@
                       required
                     ></v-select>
                   </v-col>
-                  <v-col cols="12">
+                  <v-card>
                     <v-text-field
                       label="จำนวนเล่ม"
                       type="text"
@@ -81,7 +81,7 @@
                       :rules="[(v) => !!v || 'Please fill in the information']"
                       required
                     ></v-text-field>
-                  </v-col>
+                  </v-card>
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -110,11 +110,11 @@ export default {
     return {
       //เงื่อนไขในการบันทึกข้อมูล
       snackbar: false,
-      bookStatusId: "",
       typeId: "",
       borrowId: "",
-      statusId: "",
+      bookstatusId: "",
       documentId: "",
+      
       documents: [],
       bookStatus: [],
       bookTypes: [],
@@ -180,7 +180,8 @@ export default {
     addRemand() {
       http
         .post(
-          "/remand/" + this.typeId + "/" + this.borrowId + "/" + this.statusId + "/" + this.amount
+          "/remand/" + this.borrowId + "/" + this.typeId + "/" + this.documentId + "/" + this.bookstatusId + "/" + this.amount
+          //"/remand/{borrowID}/{booktypeID}/{documentID}/{bookstatusID}/{amount}"
         )
         .then(response => {
           console.log(response)
@@ -192,12 +193,12 @@ export default {
         })
         .finally(() => {
           this.snackbar = !this.snackbar
-          this.reset()
+          // this.reset()
         })
     }
   },
   mounted() {
-    //เรียกดึงข้อมูลจากหลังบ้า
+    //เรียกดึงข้อมูลจากหลังบ้าน
     this.getDocuments()
     this.getBookingStatus()
     this.getType()

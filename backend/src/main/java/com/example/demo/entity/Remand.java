@@ -67,13 +67,13 @@ public class Remand {
     @Min(1) @Max(10)
     private @NotNull Integer amount;
 
-    public Integer getAmount() {
-        return this.amount;
-    }
+    // public Integer getAmount() {
+    //     return this.amount;
+    // }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
+    // public void setAmount(Integer amount) {
+    //     this.amount = amount;
+    // }
 
      private @NotNull Date remanddate;
     
@@ -87,14 +87,14 @@ public class Remand {
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookStatus.class)
     @JoinColumn(name = "bookstatusId", insertable = true)
-    private BookStatus statusName;
+    private BookStatus bookStatus;
 
-    public BookStatus getStatusName() {
-        return this.statusName;
+    public BookStatus getBookstatus() {
+        return this.bookStatus;
     }
 
-    public void setStatusName(BookStatus statusName) {
-        this.statusName = statusName;
+    public void setBookstatus(BookStatus bookStatus) {
+        this.bookStatus = bookStatus;
     }
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Borrow.class) // เชื่อมความสัมพันธุ์แบบ ManyToOne กับ Entity
@@ -135,6 +135,20 @@ public class Remand {
     public void setBookType(BookType bookType) {
         this.bookType = bookType;
     }
+
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Document.class)
+    @JoinColumn(name = "documentID", insertable = true) // ไป Join กับ Column ที่ชื่อ memberID โดยให้
+                                                      // insertable(เพิ่มลงตารางหรือไม่) = true
+    private  Document document;
+
+    public Document getDocument() {
+        return this.document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
 
     // ในหน้านี้จะเป็นการรับมาจาก UI ก่อน แล้วการ JoinColumn คือ การดึงไอดีจาก
     // Entity ดังกล่าวมา

@@ -46,6 +46,6 @@ public class BookStatus {
     public void setBookStatusName(String bookStatusName) {
         this.bookStatusName = bookStatusName;
     }
-	
+
 
 }
