@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>testUIwrong</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testViewdata Wrong</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/home<datalist><option>http://localhost:8080/home</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//div[@id='page']/div/header/div/div[4]/a[3]/span<datalist><option>//div[@id='page']/div/header/div/div[4]/a[3]/span</option><option>//a[3]/span</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//div[@id='page']/div/div/div/div/div/div/div/div/div[5]/a[2]/span<datalist><option>//div[@id='page']/div/div/div/div/div/div/div/div/div[5]/a[2]/span</option><option>//a[2]/span</option><option>css=a.v-btn.v-btn--contained.v-btn--router.theme--dark.v-size--default.teal.darken-4 &gt; span.v-btn__content</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div/table/tbody/tr/td<datalist><option>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div/table/tbody/tr/td</option><option>//td</option><option>css=td</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div/table/tbody/tr/td<datalist><option>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div/table/tbody/tr/td</option><option>//td</option><option>css=td</option></datalist></td><td>No data available</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testViewdataOK</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/AddBook<datalist><option>http://localhost:8080/AddBook</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//div[@id='page']/div/div/div/div/div/div/div/div/div[5]/a[2]/span<datalist><option>//div[@id='page']/div/div/div/div/div/div/div/div/div[5]/a[2]/span</option><option>//a[2]/span</option><option>css=a.v-btn.v-btn--contained.v-btn--router.theme--dark.v-size--default.teal.darken-4 &gt; span.v-btn__content</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//div[@id='app']/div/main/div/aside/div[2]/div/div/div<datalist><option>//div[@id='app']/div/main/div/aside/div[2]/div/div/div</option><option>//div[2]/div/div/div</option><option>css=div.v-toolbar__title</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div[2]<datalist><option>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div[2]</option><option>//div[2]/div[2]/div/div/div[2]</option><option>css=div.v-data-footer</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div[2]<datalist><option>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div[2]</option><option>//div[2]/div[2]/div/div/div[2]</option><option>css=div.v-data-footer</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div[2]<datalist><option>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div[2]</option><option>//div[2]/div[2]/div/div/div[2]</option><option>css=div.v-data-footer</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div[2]/div[2]<datalist><option>//div[@id='app']/div/main/div/aside/div[2]/div[2]/div/div/div[2]/div[2]</option><option>//div/div[2]/div[2]</option><option>css=div.v-data-footer__pagination</option></datalist></td><td>1-5 of 7</td>
+</tr>
+</tbody></table>
+</body>
+</html>
