@@ -67,6 +67,14 @@ public class Remand {
     @Min(1) @Max(10)
     private @NotNull Integer amount;
 
+    public Integer getAmount() {
+        return this.amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     // public Integer getAmount() {
     //     return this.amount;
     // }
@@ -87,7 +95,7 @@ public class Remand {
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookStatus.class)
     @JoinColumn(name = "bookstatusId", insertable = true)
-    private BookStatus bookStatus;
+    private @NotNull BookStatus bookStatus;
 
     public BookStatus getBookstatus() {
         return this.bookStatus;
@@ -101,7 +109,7 @@ public class Remand {
                                                                      // เป้าหมาย คือ Borrow //เป็น FK ที่ชีี้ไปที่ PK
                                                                      // ของ Borrow ไม่มั่นใจ
     @JoinColumn(name = "borrowID", insertable = true)
-    private  Borrow borrow;
+    private @NotNull Borrow borrow;
 
     public Borrow getBorrow() {
         return this.borrow;
@@ -114,7 +122,7 @@ public class Remand {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
     @JoinColumn(name = "memberID", insertable = true) // ไป Join กับ Column ที่ชื่อ memberID โดยให้
                                                       // insertable(เพิ่มลงตารางหรือไม่) = true
-    private  Member member;
+    private @NotNull  Member member;
 
     public Member getMember() {
         return this.member;
@@ -126,7 +134,7 @@ public class Remand {
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookType.class)
     @JoinColumn(name = "booktypeID", insertable = true)
-    private  BookType bookType;
+    private @NotNull BookType bookType;
 
     public BookType getBookType() {
         return this.bookType;
@@ -139,7 +147,7 @@ public class Remand {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Document.class)
     @JoinColumn(name = "documentID", insertable = true) // ไป Join กับ Column ที่ชื่อ memberID โดยให้
                                                       // insertable(เพิ่มลงตารางหรือไม่) = true
-    private  Document document;
+    private @NotNull Document document;
 
     public Document getDocument() {
         return this.document;
