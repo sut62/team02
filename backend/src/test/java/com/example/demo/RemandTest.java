@@ -1,27 +1,20 @@
 package com.example.demo;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.dao.DataIntegrityViolationException;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-
 import com.example.demo.entity.*;
 import com.example.demo.repository.*;
-
 import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@DataJpaTest
+@DataJpaTest //เรียก Data จาก Entity ต่างๆมารวมตัวกัน
 public class RemandTest {
 
     private Validator validator;
@@ -63,24 +56,25 @@ public class RemandTest {
     
     @Autowired
     BookStatusRepository bookStatusRepository;
+
     @BeforeEach
     public void setup() {
         final ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
 
-        Province province = new Province();
+        Province province = new Province();//สร้าง province เพื่อ เซ็ตตค่าให้กับ member
         province.setProvince("ชัยภูมิ");
         province = provinceRepository.saveAndFlush(province);
 
-        Prefix prefix = new Prefix();
+        Prefix prefix = new Prefix();//สร้าง prefix เพื่อ เซ็ตตค่าให้กับ member
         prefix.setPrefix("เด็กชาย");
         prefix = prefixRepository.saveAndFlush(prefix);
 
-        Memtype memtype = new Memtype();
+        Memtype memtype = new Memtype(); //สร้าง memtype เพื่อ เซ็ตตค่าให้กับ member
         memtype.setMemtype("นักศึกษา");
         memtype = memtypeRepository.saveAndFlush(memtype);
 
-        member = new Member();
+        member = new Member();//สร้าง member เพื่อ เซ็ตตค่าให้กับ borrow
         member.setIdcard("1234567890123");
         member.setName("ABCd");
         member.setProvince(province);
@@ -88,19 +82,19 @@ public class RemandTest {
         member.setMemtype(memtype);
         member = memberRepository.saveAndFlush(member);
 
-        bookType = new BookType();
+        bookType = new BookType(); //มีการสร้าง booktyp เพื่อใช้ในการ เซ็ตค่าให้กับ remand
         bookType.setBookTypeName("bookTypeName");
         bookType = bookTypeRepository.saveAndFlush(bookType);
 
-        Language language = new Language();
+        Language language = new Language();//สร้าง language เพื่อ เซ็ตตค่าให้กับ document
         language.setLanguageName("English");
         language = languageRepository.saveAndFlush(language);
 
-        BookCategory bookCategory = new BookCategory();
+        BookCategory bookCategory = new BookCategory();///สร้าง bookcategory เพื่อ เซ็ตตค่าให้กับ document
         bookCategory.setBookCategoryName("bookCategoryName");
         bookCategory = bookCategoryRepository.saveAndFlush(bookCategory);
 
-        document = new Document();
+        document = new Document();///สร้าง document เพื่อ เซ็ตตค่าให้กับ remand
         document.setAmount(1);
         document.setBookName("Head First");
         document.setWritterName("Bert Bates");
@@ -110,7 +104,7 @@ public class RemandTest {
         document = documentRepository.saveAndFlush(document);
 
         Date date = new Date();
-        borrow = new Borrow();
+        borrow = new Borrow();//สร้าง borrow เพื่อ เซ็ตตค่าให้กับ remand
         borrow.setNumbers(1L);
         borrow.setBorrowDate(date);
         borrow.setTell("0812345678");
@@ -120,34 +114,36 @@ public class RemandTest {
         borrow.setMemtype(memtype);
         borrow = borrowRepository.saveAndFlush(borrow);
 
-        bookStatus = new BookStatus();
+        bookStatus = new BookStatus();//สร้าง bookstatus เพื่อ เซ็ตตค่าให้กับ remand
         bookStatus.setBookStatusName("bookStatusName");
         bookStatus = bookStatusRepository.saveAndFlush(bookStatus);
     }
 
+    //พี่ทีเอให้เพิ่มเทส positive ให้ครบค่ะ โดยบอกว่าใน must be ok ของหนูยังเทสไม่ครบค่ะ หนูก็เลยทำตรงนี้เพิ่มมาค่ะ
+
     @Test
-    void B5902200_testCreateRemandOK() {
+    void B5902200_testCreateRemandOK() {       //method test 
         Remand remand = new Remand();
         Date nowDate = new Date();
         remand.setRemanddate(nowDate);
         remand.setAmount(1);
-        remand.setBookType(bookType);
+        remand.setBookType(bookType);           //ค่าของพวกนี้ต้องใส่ เพราะเรา set เป็น @NotNull แล้ว จึงต้องมีค่าเหล่านี้ set ลงไป
         remand.setBorrow(borrow);
         remand.setDocument(document);
-        remand.setMember(member);
         remand.setBookstatus(bookStatus);
-		remand = RemandRepository.saveAndFlush(remand);
+        remand = RemandRepository.saveAndFlush(remand); 
 
 		Optional<Remand> Remand = RemandRepository.findById(remand.getId());
         
         assertEquals(nowDate, Remand.get().getRemanddate());
         assertEquals(1, Remand.get().getAmount().intValue());
-        assertEquals(bookType, Remand.get().getBookType());
+        assertEquals(bookType, Remand.get().getBookType()); //พอมีการ set ค่า ก็ต้องมีการ assert ค่าเข้าไป เพื่อเช็คว่าค่าตรงกัน เช่น ชื่อคนยืม ปุยนุ่น เหมือนกัน
         assertEquals(borrow, Remand.get().getBorrow());
         assertEquals(document, Remand.get().getDocument());
-        assertEquals(member, Remand.get().getMember());
     }
 
+    //แต่ก่อนจะมี Test Positive ได้ ต้องมีการดึงค่าจาก Entity อื่นเข้ามาก่อน
+    
 	@Test
     void B5902200_testRemandIdMustNotBeNull() {
         Remand remand = new Remand();
@@ -158,7 +154,6 @@ public class RemandTest {
         remand.setBookType(bookType);
         remand.setBorrow(borrow);
         remand.setDocument(document);
-        remand.setMember(member);
         remand.setBookstatus(bookStatus);
 		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
 		
@@ -178,7 +173,6 @@ public class RemandTest {
         remand.setBookType(bookType);
         remand.setBorrow(borrow);
         remand.setDocument(document);
-        remand.setMember(member);
         remand.setBookstatus(bookStatus);
 		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
 		
@@ -199,7 +193,6 @@ public class RemandTest {
         remand.setBookType(bookType);
         remand.setBorrow(borrow);
         remand.setDocument(document);
-        remand.setMember(member);
         remand.setBookstatus(bookStatus);
 		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
 		
@@ -221,7 +214,6 @@ public class RemandTest {
         remand.setBorrow(borrow);
         remand.setDocument(document);
         remand.setBookstatus(bookStatus);
-        remand.setMember(member);
 		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
 		
 		assertEquals(1, result.size());
@@ -242,7 +234,6 @@ public class RemandTest {
         remand.setBorrow(borrow);
         remand.setDocument(document);
         remand.setBookstatus(bookStatus);
-        remand.setMember(member);
 		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
 		
 		assertEquals(1, result.size());
@@ -263,7 +254,6 @@ public class RemandTest {
         remand.setBorrow(null);
         remand.setDocument(document);
         remand.setBookstatus(bookStatus);
-        remand.setMember(member);
 		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
 		
 		assertEquals(1, result.size());
@@ -284,7 +274,6 @@ public class RemandTest {
         remand.setBorrow(borrow);
         remand.setDocument(null);
         remand.setBookstatus(bookStatus);
-        remand.setMember(member);
 		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
 		
 		assertEquals(1, result.size());
@@ -305,7 +294,6 @@ public class RemandTest {
         remand.setBorrow(borrow);
         remand.setDocument(document);
         remand.setBookstatus(null);
-        remand.setMember(member);
 		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
 		
 		assertEquals(1, result.size());
@@ -315,24 +303,4 @@ public class RemandTest {
         assertEquals("bookStatus", v.getPropertyPath().toString());
     }
 
-    @Test
-    void B5902200_testMemberMustNotBeNull() {
-        Remand remand = new Remand();
-        Date date = new Date();
-        remand.setRemanddate(date);
-        remand.setId(1L);
-        remand.setAmount(1);
-        remand.setBookType(bookType);
-        remand.setBorrow(borrow);
-        remand.setDocument(document);
-        remand.setBookstatus(bookStatus);
-        remand.setMember(null);
-		Set<ConstraintViolation<Remand>> result = validator.validate(remand);
-		
-		assertEquals(1, result.size());
-		
-        ConstraintViolation<Remand> v = result.iterator().next();
-        assertEquals("must not be null", v.getMessage());
-        assertEquals("member", v.getPropertyPath().toString());
-    }
 }
