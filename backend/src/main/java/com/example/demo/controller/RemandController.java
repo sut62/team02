@@ -60,7 +60,6 @@ class RemandController {
         BookStatus bookstatus = bookStatusRepository.findById(bookstatusID).get();
 
         newRemand.setAmount(amount);
-        newRemand.setMember(borrow.getMember());
         newRemand.setBookType(booktype);
         newRemand.setBorrow(borrow);
         newRemand.setDocument(document);

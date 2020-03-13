@@ -57,7 +57,9 @@ public class Remand {
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookStatus.class)
     @JoinColumn(name = "bookstatusId", insertable = true)
-    private @NotNull BookStatus bookStatus;
+    private @NotNull BookStatus bookStatus;         //ต้องมาใส่ @NotNull ที่หน้านี้ก่อน ค่อยไปเขียน Test
+                                                    //ใส่ NotNull ตรง BookStatus แบบนี้แปลว่า ค่า BookStatus ที่เลือกใน Combobox ต้อวห้ามว่าง
+                                                    //User ต้องเลือก Combox ฺBookStatus ห้ามว่าง
 
     public BookStatus getBookstatus() {
         return this.bookStatus;
@@ -77,18 +79,6 @@ public class Remand {
 
     public void setBorrow(Borrow borrow) {
         this.borrow = borrow;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
-    @JoinColumn(name = "memberID", insertable = true) 
-    private @NotNull  Member member;
-
-    public Member getMember() {
-        return this.member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
     }
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = BookType.class)
