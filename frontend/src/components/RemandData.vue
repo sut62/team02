@@ -41,7 +41,7 @@ export default {
     return {
       headers: [
         { text: "Remand ID", value: "id" },
-        { text: "ชื่อสมาชิก", value: "member.name" },
+        { text: "ชื่อสมาชิก", value: "borrow.member.name" },
         { text: "ชื่อหนังสือ", value: "borrow.document.bookName" },
         { text: "หมวดหมู่", value: "borrow.document.bookCategory.bookCategoryName" },
         { text: "ประเภทหนังสือ", value: "bookType.bookTypeName" },
