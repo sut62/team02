@@ -430,6 +430,40 @@ public class MemberTests {
         assertEquals("name", violation.getPropertyPath().toString());
     }
 
+
+    @Test
+    void b5923144_testMemberMustBeOK(){
+        Member member= new Member();
+
+        Province province = new Province();
+        province.setProvince("ชัยภูมิ");
+        province = provinceRepository.saveAndFlush(province);
+
+        Prefix prefix = new Prefix();
+        prefix.setPrefix("เด็กชาย");
+        prefix = prefixRepository.saveAndFlush(prefix);
+
+        Memtype memtype = new Memtype();
+        memtype.setMemtype("นักศึกษา");
+        memtype = memtypeRepository.saveAndFlush(memtype);
+
+        member.setIdcard("1234567890123");
+        member.setName("ชื่อนามสกุล");
+        member.setProvince(province);
+        member.setPrefix(prefix);
+        member.setMemtype(memtype);
+
+        member = memberRepository.saveAndFlush(member);
+
+        Optional<Member> found = memberRepository.findById(member.getMemberid());
+
+        assertEquals("ชื่อนามสกุล", found.get().getName());             
+        assertEquals("1234567890123", found.get().getIdcard());      
+        assertEquals(prefix, found.get().getPrefix());              
+        assertEquals(province, found.get().getProvince());
+        assertEquals(memtype, found.get().getMemtype());
+    }
+
 }
 
 
